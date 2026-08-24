@@ -3,134 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CV Online - Erlan Maulana | Customer Service, Food Prep, Operasional & Web Developer">
-<title>CV — Erlan Maulana</title>
+<title>CV & Portofolio — Erlan Maulana</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-:root{
-  --bg:#f8fafc;
-  --bg2:#ffffff;
-  --card:#ffffff;
-  --line:#e2e8f0;
-  --text:#1e293b;
-  --muted:#64748b;
-  --navy:#0f172a;
-  --accent:#d97706;
-  --accent-light:#f59e0b;
-  --glow:rgba(217, 119, 6, 0.15);
-  --max:1120px;
+:root {
+  --bg: #070a13;
+  --bg-card: #0f172a;
+  --bg-card-hover: #1e293b;
+  --line: rgba(212, 175, 55, 0.25);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --navy: #0a1128;
+  --gold: #d4af37;
+  --gold-light: #fef08a;
+  --gold-gradient: linear-gradient(135deg, #f59e0b, #d4af37, #b8860b);
+  --max: 1120px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
 }
-a{text-decoration:none;color:inherit}
-.container{width:min(var(--max),92%);margin:auto}
-header{
-  position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;
-  background:rgba(15, 23, 42, 0.95);backdrop-filter:blur(16px);
-  border-bottom:3px solid var(--accent)
+
+a { text-decoration: none; color: inherit; }
+.container { width: min(var(--max), 92%); margin: auto; }
+
+/* NAVBAR HEADER */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 72px;
+  background: rgba(7, 10, 19, 0.9); backdrop-filter: blur(16px);
+  border-bottom: 2px solid var(--gold);
 }
-.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:800;font-size:20px;letter-spacing:-1px;color:#ffffff}
-.logo span{color:var(--accent-light)}
-.navlinks{display:flex;gap:22px;align-items:center}
-.navlinks a{font-size:13px;color:#cbd5e1;transition:.25s;font-weight:500}
-.navlinks a:hover,.navlinks a.active{color:#ffffff}
-.navlinks a.active:after{content:"";display:block;height:2px;background:var(--accent-light);margin-top:7px;border-radius:9px}
-.menu{display:none;border:1px solid #334155;background:#1e293b;color:#fff;border-radius:8px;padding:9px;cursor:pointer}
-section{padding:105px 0;scroll-margin-top:70px}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px;background:linear-gradient(180deg, #0f172a 0%, #1e293b 100%);color:#fff;border-bottom:4px solid var(--accent)}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
-.kicker{color:#94a3b8;font-size:13px;margin-bottom:12px;font-weight:600}
-.kicker span,.accent{color:var(--accent-light)}
-h1{font-size:clamp(40px,6.5vw,75px);line-height:.95;letter-spacing:-3px;margin-bottom:20px;color:#fff}
-.hero h1 .typed-prefix{color:#fff}.hero h1 .typed-main{color:var(--accent-light)}
-.role{font-size:16px;color:#e2e8f0;margin-bottom:18px}
-.role .dot{color:var(--accent-light);margin:0 7px;font-weight:bold}
-.desc{max-width:650px;color:#cbd5e1;font-size:14px;line-height:1.9}
-.hero-actions{display:flex;gap:12px;margin-top:27px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  min-width:138px;padding:12px 22px;border-radius:6px;border:1px solid var(--accent);
-  background:var(--accent);color:#fff;font-size:12px;font-weight:700;transition:.25s;
+.nav { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.logo { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; color: #ffffff; }
+.logo span { color: var(--gold); }
+
+.navlinks { display: flex; gap: 20px; align-items: center; }
+.navlinks a { font-size: 13px; color: var(--muted); transition: .25s; font-weight: 600; }
+.navlinks a:hover, .navlinks a.active { color: var(--gold-light); }
+.navlinks a.active::after {
+  content: ""; display: block; height: 2px; background: var(--gold); margin-top: 5px; border-radius: 9px;
 }
-.btn:hover{transform:translateY(-2px);background:#b45309;border-color:#b45309;box-shadow:0 10px 25px rgba(217,119,6,0.3)}
-.btn.ghost{background:transparent;color:var(--navy);border-color:#94a3b8}
-.btn.ghost:hover{background:var(--navy);color:#ffffff;border-color:var(--navy)}
 
-.hero .btn.ghost{background:transparent;color:#ffffff;border-color:#475569}
-.hero .btn.ghost:hover{background:rgba(255,255,255,0.1);color:#ffffff;border-color:#ffffff}
-
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:55px}
-.stat{border-left:3px solid var(--accent);padding:10px 18px;background:rgba(255,255,255,0.05);border-radius:0 8px 8px 0}
-.stat b{font-size:18px;color:#fff}.stat small{display:block;color:#94a3b8;margin-top:4px;font-size:11px}
-
-.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:34px;border-left:4px solid var(--accent);padding-left:16px}
-.eyebrow{font-size:11px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
-h2{font-size:32px;letter-spacing:-1px;color:var(--navy)}
-.section-head p{max-width:420px;color:var(--muted);font-size:13px;line-height:1.8}
-
-.service-card{
-  padding:28px;border:1px solid var(--line);border-radius:8px;background:var(--card);
-  box-shadow:0 2px 4px rgba(0,0,0,0.02);margin-top:10px
+.btn-print {
+  background: var(--gold-gradient); color: var(--navy); border: none;
+  padding: 8px 18px; border-radius: 20px; font-weight: 800; font-size: 12px;
+  cursor: pointer; transition: .3s;
 }
-.service-card p{color:#334155;font-size:15px;line-height:1.9}
-.service-card b{color:var(--navy)}
-.service-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-.tag{background:#f1f5f9;color:var(--navy);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--line)}
+.btn-print:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
 
-.skills{display:grid;grid-template-columns:1fr;gap:22px;max-width:900px}
-.skill-row{
-  margin:0;padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--card);
-  box-shadow:0 1px 3px rgba(0,0,0,0.05)
+.menu { display: none; border: 1px solid var(--line); background: var(--bg-card); color: #fff; border-radius: 8px; padding: 8px; cursor: pointer; }
+
+/* SECTIONS */
+section { padding: 90px 0 40px 0; scroll-margin-top: 70px; }
+
+/* HERO SECTION */
+.hero { min-height: 85vh; display: flex; align-items: center; padding-top: 100px; background: linear-gradient(180deg, #070a13 0%, #0f172a 100%); }
+.kicker { color: var(--muted); font-size: 13px; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+.kicker span { color: var(--gold); }
+
+h1 { font-size: clamp(34px, 5.5vw, 62px); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; color: #fff; }
+.typed-main {
+  background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.skill-meta{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;margin-bottom:8px;color:var(--navy)}
-.skill-meta span.desc-text{font-size:12px;color:var(--muted);display:block;margin-top:4px;font-weight:400}
-.skill-meta b{color:var(--accent);font-size:13px;font-weight:700}
-.skill-level{height:7px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin-top:8px}
-.skill-level i{display:block;height:100%;background:linear-gradient(90deg, var(--accent), var(--accent-light));border-radius:99px}
-
-.experience{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.exp{padding:25px;border:1px solid var(--line);border-radius:8px;background:var(--card);box-shadow:0 2px 4px rgba(0,0,0,0.02)}
-.exp .date{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:1px}.exp h3{margin:8px 0 4px 0;font-size:18px;color:var(--navy)}.exp .sub-title{font-size:13px;color:var(--muted);margin-bottom:14px;font-style:italic;font-weight:500}.exp ul{margin-left:16px;color:#475569;font-size:13px;line-height:1.8}.exp ul li{margin-bottom:6px}
-
-.about{display:grid;grid-template-columns:1fr;gap:30px}
-.about p{color:#334155;font-size:14px;line-height:1.9}
-.socials{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-.social{
-  height:40px;padding:0 18px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
-  border-radius:6px;color:var(--navy);font-size:13px;font-weight:600;background:var(--card);transition:.25s
+.cursor {
+  display: inline-block; width: 3px; height: .8em; background: var(--gold-light); margin-left: 4px; animation: blink .8s infinite; vertical-align: -2px;
 }
-.social:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.05)}
-.social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+@keyframes blink { 50% { opacity: 0; } }
 
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px}
-.edu-card{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:22px;box-shadow:0 2px 4px rgba(0,0,0,0.02)}
-.edu-card h3{font-size:16px;margin-bottom:6px;color:var(--navy)}
-.edu-card .year{color:var(--accent);font-size:12px;font-weight:700}
+.role { font-size: 15px; color: var(--gold-light); margin-bottom: 18px; font-weight: 600; }
+.role .dot { color: var(--gold); margin: 0 6px; }
+.desc { max-width: 680px; color: var(--muted); font-size: 14.5px; line-height: 1.8; }
 
-footer{background:var(--navy);border-top:3px solid var(--accent);padding:30px 0;color:#94a3b8;font-size:12px}
-.footer{display:flex;justify-content:space-between;gap:15px}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}.reveal.show{opacity:1;transform:none}
-.cursor{display:inline-block;width:3px;height:.9em;background:var(--accent-light);margin-left:4px;animation:blink .8s infinite;vertical-align:-2px}
-@keyframes blink{50%{opacity:0}}
-@media(max-width:800px){
-  .navlinks{position:absolute;top:72px;left:0;right:0;background:var(--navy);padding:20px;display:none;flex-direction:column;align-items:flex-start;border-bottom:1px solid #334155}
-  .navlinks.open{display:flex}.menu{display:block}.experience,.edu-grid{grid-template-columns:1fr}
-  h1{letter-spacing:-1px}.stats{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}.footer{flex-direction:column}
+.hero-actions { display: flex; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 24px; border-radius: 6px; background: var(--gold-gradient);
+  color: var(--navy); font-size: 13px; font-weight: 800; transition: .25s; border: none;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); }
+.btn.ghost { background: transparent; color: #fff; border: 1px solid var(--line); }
+.btn.ghost:hover { background: var(--bg-card-hover); border-color: var(--gold); color: var(--gold-light); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 45px; }
+.stat { border-left: 3px solid var(--gold); padding: 12px 18px; background: rgba(255,255,255,0.03); border-radius: 0 8px 8px 0; }
+.stat b { font-size: 16px; color: #fff; display: block; }
+.stat small { color: var(--muted); font-size: 11px; }
+
+/* HEADINGS */
+.section-head { margin-bottom: 28px; border-left: 4px solid var(--gold); padding-left: 16px; }
+.eyebrow { font-size: 11px; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+h2 { font-size: 30px; letter-spacing: -1px; color: #fff; }
+
+/* CARDS & CONTENT */
+.card {
+  padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-card);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-top: 10px; transition: .3s;
+}
+.card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.card p { color: #cbd5e1; font-size: 14.5px; line-height: 1.8; }
+.card b { color: var(--gold-light); }
+
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.info-box {
+  background: var(--bg-card); border: 1px solid var(--line); border-left: 3px solid var(--gold);
+  padding: 16px 20px; border-radius: 8px; transition: .3s;
+}
+.info-box h4 { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.info-box p { font-size: 14px; font-weight: 600; color: #fff; }
+
+.custom-list { list-style: none; }
+.custom-list li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 14px; color: #cbd5e1; }
+.custom-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
+.custom-list li b { color: var(--gold-light); }
+
+/* SKILL BARS */
+.skill-row { margin-bottom: 18px; }
+.skill-meta { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #fff; }
+.skill-meta span.desc-text { font-size: 12px; color: var(--muted); display: block; font-weight: 400; margin-top: 2px; }
+.skill-meta b { color: var(--gold-light); font-weight: 700; }
+.skill-level { height: 8px; background: #1e293b; border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
+.skill-level i { display: block; height: 100%; background: var(--gold-gradient); border-radius: 99px; }
+
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+.tag { background: rgba(212, 175, 55, 0.12); color: var(--gold-light); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); }
+
+/* SCROLL REVEAL ANIMATION */
+.reveal { opacity: 0; transform: translateY(25px); transition: opacity .6s ease-out, transform .6s ease-out; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* FOOTER */
+footer { background: #04060c; border-top: 1px solid var(--line); padding: 30px 0; color: var(--muted); font-size: 12px; margin-top: 50px; }
+.footer { display: flex; justify-content: space-between; gap: 15px; }
+
+/* PRINT MEDIA OVERRIDE */
+@media print {
+  header, .btn-print, .hero-actions { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  section { padding: 15px 0 !important; }
+  .card, .info-box { background: #fff !important; border: 1px solid #ccc !important; color: #000 !important; }
+  .card p, .custom-list li, h2, h1 { color: #000 !important; }
+  .typed-main { -webkit-text-fill-color: #000 !important; }
+}
+
+@media (max-width: 800px) {
+  .navlinks {
+    position: absolute; top: 72px; left: 0; right: 0; background: var(--bg-card);
+    padding: 20px; display: none; flex-direction: column; align-items: flex-start; border-bottom: 1px solid var(--line);
+  }
+  .navlinks.open { display: flex; }
+  .menu { display: block; }
+  .stats { grid-template-columns: 1fr; }
+  .footer { flex-direction: column; }
 }
 </style>
 </head>
 <body>
+
 <header>
   <div class="container nav">
-    <a class="logo" href="#home">Erlan <span>Maulana</span></a>
+    <a class="logo" href="#home">ERLAN <span>MAULANA</span></a>
     <button class="menu" id="menu" aria-label="Menu">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -143,26 +182,24 @@ footer{background:var(--navy);border-top:3px solid var(--accent);padding:30px 0;
       <a href="#education">Pendidikan</a>
       <a href="#contact">Kontak</a>
     </nav>
+    <button class="btn-print" onclick="window.print()">Cetak / PDF</button>
   </div>
 </header>
 
 <main>
 <section class="hero" id="home">
  <div class="container">
-  <div class="hero-grid">
    <div class="reveal">
-    <div class="kicker">Hello, <span>I'm</span></div>
-    <h1><span class="typed-prefix">Erlan</span><span class="typed-space"> </span><span class="typed-main">Maulana</span><i class="cursor"></i></h1>
-    <div class="role">From<span class="dot">Lebak</span>-<span class="dot">Banten</span>-<span class="dot">Indonesia</span></div>
+    <div class="kicker"><span>Hello</span></div>
+    <h1><span class="typed-prefix">I'm </span><span class="typed-main"></span><i class="cursor"></i></h1>
+    <div class="role">Customer Service<span class="dot">•</span>Food Prep & Cooking<span class="dot">•</span>Web Developer<span class="dot">•</span>Teknis Lapangan</div>
     <p class="desc">Pekerja keras, disiplin, dan berdedikasi tinggi dengan pengalaman di bidang pelayanan pelanggan (customer service), pengolahan makanan (food prep/cooking), serta pekerjaan teknis lapangan. Memiliki etos kerja yang kuat, cepat beradaptasi, serta terbiasa bekerja secara mandiri maupun dalam tim.</p>
-    <div class="hero-actions"><a class="btn" href="#contact">Contact</a><a class="btn ghost" href="#experience">Experience</a></div>
-    <div class="socials" id="social">
-      <a class="social" href="tel:083894480846"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 083894480846</a>
-      <a class="social" href="mailto:id.erlan.maulana@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> id.erlan.maulana@gmail.com</a>
+    <div class="hero-actions">
+      <a class="btn" href="#contact">Contact</a>
+      <a class="btn ghost" href="#experience">Experience</a>
     </div>
    </div>
 
-  </div>
   <div class="stats reveal">
     <div class="stat"><b>Lebak, Banten</b><small>Domisili Utama</small></div>
     <div class="stat"><b>Aktif</b><small>Bahasa Indonesia</small></div>
@@ -173,22 +210,21 @@ footer{background:var(--navy);border-top:3px solid var(--accent);padding:30px 0;
 
 <section id="about">
  <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Brief profile</div><h2>Ringkasan <span class="accent">Profil</span></h2></div></div>
-  <div class="about">
-   <div class="reveal">
-     <p>Pekerja keras, disiplin, dan berdedikasi tinggi dengan pengalaman kerja di bidang <b style="color:#0f172a">pelayanan pelanggan (customer service)</b>, <b style="color:#0f172a">pengolahan makanan (food prep/cooking)</b>, serta <b style="color:#0f172a">pekerjaan teknis lapangan</b>.</p>
-     <p style="margin-top:18px">Memiliki etos kerja yang kuat, cepat beradaptasi dengan lingkungan kerja baru, serta terbiasa bekerja secara mandiri maupun dalam tim untuk mencapai target operasional harian.</p>
-   </div>
+  <div class="section-head reveal"><div><div class="eyebrow">Brief profile</div><h2>Ringkasan <span style="color:var(--gold)">Profil</span></h2></div></div>
+  <div class="card reveal">
+    <p>Pekerja keras, disiplin, dan berdedikasi tinggi dengan pengalaman kerja di bidang <b>pelayanan pelanggan (customer service)</b>, <b>pengolahan makanan (food prep/cooking)</b>, serta <b>pekerjaan teknis lapangan</b>.</p>
+    <p style="margin-top:12px">Memiliki etos kerja yang kuat, cepat beradaptasi dengan lingkungan kerja baru, serta terbiasa bekerja secara mandiri maupun dalam tim untuk mencapai target operasional harian.</p>
+  </div>
   </div>
  </div>
 </section>
 
 <section id="services">
  <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Digital services</div><h2>Web Developer & <span class="accent">Digital Builder</span></h2></div></div>
-  <div class="service-card reveal">
+  <div class="section-head reveal"><div><div class="eyebrow">Digital Services</div><h2>Web Developer & <span style="color:var(--gold)">Digital Builder</span></h2></div></div>
+  <div class="card reveal">
     <p>Web Developer & Digital Builder dengan kemampuan membangun semua jenis website: <b>Portfolio, Company Profile, E-Commerce, Landing Page, Web App Dan Lain-Lain</b>. Selain itu juga mampu mengembangkan <b>AI, membuat Tools otomasi, Game Web, dan Desain Dokumen CV PDF</b>. Melayani kebutuhan digital untuk Personal maupun Bisnis dengan hasil yang cepat, rapi, dan fungsional. Menguasai <b>HTML, CSS, JavaScript</b>.</p>
-    <div class="service-tags">
+    <div class="tags">
       <span class="tag">Portfolio</span>
       <span class="tag">Company Profile</span>
       <span class="tag">E-Commerce</span>
@@ -206,129 +242,114 @@ footer{background:var(--navy);border-top:3px solid var(--accent);padding:30px 0;
 
 <section id="experience">
  <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Experience</div><h2>Pengalaman <span class="accent">Kerja</span></h2></div><p>Pengalaman kerja profesional di berbagai industri dan operasional lapangan.</p></div>
-  <div class="experience">
-   <article class="exp reveal">
-     <div class="date">MARET 2026 — MEI 2026</div>
-     <h3>Staff Pelayan & Produksi</h3>
-     <div class="sub-title">Cireng Mini Crunchy (Depok, Sukmajaya)</div>
-     <ul>
-       <li>Mengelola persiapan bahan baku dan inventaris lapak sebelum jam operasional harian.</li>
-       <li>Melayani pesanan pelanggan secara ramah, cepat, dan teratur.</li>
-       <li>Bertanggung jawab pada proses penggorengan dan penyajikan makanan sesuai standar kualitas dan kebersihan.</li>
-     </ul>
-   </article>
+  <div class="section-head reveal"><div><div class="eyebrow">Experience</div><h2>Pengalaman <span style="color:var(--gold)">Kerja</span></h2></div></div>
+  <div class="grid-2 reveal">
+    <div class="card">
+      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">MARET 2026 — MEI 2026</div>
+      <h3 style="color:#fff; font-size:18px">Staff Pelayan & Produksi</h3>
+      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Cireng Mini Crunchy (Depok, Sukmajaya)</div>
+      <ul class="custom-list">
+        <li>Mengelola persiapan bahan baku dan inventaris lapak sebelum jam operasional harian.</li>
+        <li>Melayani pesanan pelanggan secara ramah, cepat, dan teratur.</li>
+        <li>Bertanggung jawab pada proses penggorengan dan penyajikan makanan sesuai standar kualitas dan kebersihan.</li>
+      </ul>
+    </div>
 
-   <article class="exp reveal">
-     <div class="date">JULI 2025 — SEPTEMBER 2025</div>
-     <h3>Staff Operasional & Penggorengan</h3>
-     <div class="sub-title">Ayam Kremes (Tangerang, Cipondoh)</div>
-     <ul>
-       <li>Mempersiapkan area kerja dan perlengkapan jualan untuk pembukaan operasional harian.</li>
-       <li>Mengatur pesanan pembeli dan memastikan kepuasan pelanggan melalui pelayanan yang responsif.</li>
-       <li>Memasak dan menyajikan menu ayam kremes dengan menjaga ketepatan waktu serta kebersihan produk.</li>
-     </ul>
-   </article>
+    <div class="card">
+      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">JULI 2025 — SEPTEMBER 2025</div>
+      <h3 style="color:#fff; font-size:18px">Staff Operasional & Penggorengan</h3>
+      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Ayam Kremes (Tangerang, Cipondoh)</div>
+      <ul class="custom-list">
+        <li>Mempersiapkan area kerja dan perlengkapan jualan untuk pembukaan operasional harian.</li>
+        <li>Mengatur pesanan pembeli dan memastikan kepuasan pelanggan melalui pelayanan yang responsif.</li>
+        <li>Memasak dan menyajikan menu ayam kremes dengan menjaga ketepatan waktu serta kebersihan produk.</li>
+      </ul>
+    </div>
 
-   <article class="exp reveal">
-     <div class="date">JUNI 2025 — JULI 2025</div>
-     <h3>Pramuniaga & Staff Lapangan</h3>
-     <div class="sub-title">Martabak Mini Laris Manis (Tangerang, Ciputat)</div>
-     <ul>
-       <li>Melakukan persiapan kelengkapan dagang untuk penjualan operasional keliling.</li>
-       <li>Mengirimkan dan menjajakan produk sesuai rute target penjualan yang ditentukan.</li>
-       <li>Memproses penyajikan dan memasak produk secara langsung di tempat sesuai permintaan konsumen.</li>
-     </ul>
-   </article>
+    <div class="card">
+      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">JUNI 2025 — JULI 2025</div>
+      <h3 style="color:#fff; font-size:18px">Pramuniaga & Staff Lapangan</h3>
+      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Martabak Mini Laris Manis (Tangerang, Ciputat)</div>
+      <ul class="custom-list">
+        <li>Melakukan persiapan kelengkapan dagang untuk penjualan operasional keliling.</li>
+        <li>Mengirimkan dan menjajakan produk sesuai rute target penjualan yang ditentukan.</li>
+        <li>Memproses penyajikan dan memasak produk secara langsung di tempat sesuai permintaan konsumen.</li>
+      </ul>
+    </div>
 
-   <article class="exp reveal">
-     <div class="date">FLEKSIBEL / HARIAN</div>
-     <h3>Tenaga Kerja Lapangan & Jasa Harian</h3>
-     <div class="sub-title">Berbagai Sektor Industri & Jasa</div>
-     <ul>
-       <li><b>Pekerja Industri Gipsum:</b> Bertanggung jawab dalam proses pencetakan dan pemasangan lis gipsum secara teliti.</li>
-       <li><b>Pekerja Konstruksi/Bangunan:</b> Membantu operasional pembangunan rumah dan struktur bangunan.</li>
-       <li><b>Staff Operasional Warung Pantai:</b> Memelihara kebersihan area, melayani pengunjung, serta menyajikan makanan/minuman.</li>
-       <li><b>Pengemudi Transportasi (Ojek):</b> Memberikan layanan antar-jemput penumpang dengan mengutamakan keselamatan dan ketepatan waktu.</li>
-     </ul>
-   </article>
+    <div class="card">
+      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">FLEKSIBEL / HARIAN</div>
+      <h3 style="color:#fff; font-size:18px">Tenaga Kerja Lapangan & Jasa Harian</h3>
+      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Berbagai Sektor Industri & Jasa</div>
+      <ul class="custom-list">
+        <li><b>Pekerja Industri Gipsum:</b> Bertanggung jawab dalam proses pencetakan dan pemasangan lis gipsum secara teliti.</li>
+        <li><b>Pekerja Konstruksi/Bangunan:</b> Membantu operasional pembangunan rumah dan struktur bangunan.</li>
+        <li><b>Staff Operasional Warung Pantai:</b> Memelihara kebersihan area, melayani pengunjung, serta menyajikan makanan/minuman.</li>
+        <li><b>Pengemudi Transportasi (Ojek):</b> Memberikan layanan antar-jemput penumpang dengan mengutamakan keselamatan dan ketepatan waktu.</li>
+      </ul>
+    </div>
   </div>
  </div>
 </section>
 
 <section id="skills">
  <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Skill</div><h2>Keterampilan <span class="accent">Utama</span></h2></div></div>
-  <div class="skills">
-   <div class="skill-row reveal">
-     <div class="skill-meta">
-       <div>
-         <b>Kuliner & Operasional</b>
-         <span class="desc-text">Persiapan Bahan Makanan (Food Prep), Pengolahan & Penggorengan, Penjualan Lapak/Keliling.</span>
-       </div>
-       <b>95%</b>
-     </div>
-     <div class="skill-level"><i style="width:95%"></i></div>
-   </div>
+  <div class="section-head reveal"><div><div class="eyebrow">Skill</div><h2>Keterampilan <span style="color:var(--gold)">Utama</span></h2></div></div>
+  <div class="card reveal">
+    <div class="skill-row">
+      <div class="skill-meta">
+        <div>Kuliner & Operasional<span class="desc-text">Persiapan Bahan Makanan (Food Prep), Pengolahan & Penggorengan, Penjualan Lapak/Keliling.</span></div>
+        <b>95%</b>
+      </div>
+      <div class="skill-level"><i style="width:95%"></i></div>
+    </div>
 
-   <div class="skill-row reveal">
-     <div class="skill-meta">
-       <div>
-         <b>Dasar Web Development</b>
-         <span class="desc-text">HTML, CSS, JavaScript, Bisa Membuat Website Sederhana Untuk Kebutuhan Promosi/UMKM, Personal Maupun Bisnis.</span>
-       </div>
-       <b>85%</b>
-     </div>
-     <div class="skill-level"><i style="width:85%"></i></div>
-   </div>
+    <div class="skill-row">
+      <div class="skill-meta">
+        <div>Dasar Web Development<span class="desc-text">HTML, CSS, JavaScript, Bisa Membuat Website Sederhana Untuk Kebutuhan Promosi/UMKM, Personal Maupun Bisnis.</span></div>
+        <b>85%</b>
+      </div>
+      <div class="skill-level"><i style="width:85%"></i></div>
+    </div>
 
-   <div class="skill-row reveal">
-     <div class="skill-meta">
-       <div>
-         <b>Microsoft Office</b>
-         <span class="desc-text">Word, Excel.</span>
-       </div>
-       <b>80%</b>
-     </div>
-     <div class="skill-level"><i style="width:80%"></i></div>
-   </div>
+    <div class="skill-row">
+      <div class="skill-meta">
+        <div>Microsoft Office<span class="desc-text">Word, Excel.</span></div>
+        <b>80%</b>
+      </div>
+      <div class="skill-level"><i style="width:80%"></i></div>
+    </div>
 
-   <div class="skill-row reveal">
-     <div class="skill-meta">
-       <div>
-         <b>Pertukangan & Teknis</b>
-         <span class="desc-text">Pencetakan & Pemasangan Gipsum, Dasar Konstruksi Bangunan.</span>
-       </div>
-       <b>85%</b>
-     </div>
-     <div class="skill-level"><i style="width:85%"></i></div>
-   </div>
+    <div class="skill-row">
+      <div class="skill-meta">
+        <div>Pertukangan & Teknis<span class="desc-text">Pencetakan & Pemasangan Gipsum, Dasar Konstruksi Bangunan.</span></div>
+        <b>85%</b>
+      </div>
+      <div class="skill-level"><i style="width:85%"></i></div>
+    </div>
 
-   <div class="skill-row reveal">
-     <div class="skill-meta">
-       <div>
-         <b>Soft Skills</b>
-         <span class="desc-text">Pelayanan Pelanggan (Customer Service), Manajemen Waktu, Komunikasi Ramah, Kerja Sama Tim, Adaptasi Cepat.</span>
-       </div>
-       <b>95%</b>
-     </div>
-     <div class="skill-level"><i style="width:95%"></i></div>
-   </div>
- </div>
+    <div class="skill-row" style="margin-bottom:0">
+      <div class="skill-meta">
+        <div>Soft Skills<span class="desc-text">Pelayanan Pelanggan (Customer Service), Manajemen Waktu, Komunikasi Ramah, Kerja Sama Tim, Adaptasi Cepat.</span></div>
+        <b>95%</b>
+      </div>
+      <div class="skill-level"><i style="width:95%"></i></div>
+    </div>
+  </div>
  </div>
 </section>
 
 <section id="education">
  <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Education</div><h2>Riwayat <span class="accent">Pendidikan</span></h2></div></div>
-  <div class="edu-grid">
-    <div class="edu-card reveal">
-      <h3>SDN 1 Sawarna Timur</h3>
-      <div class="year">Lulus 2017</div>
+  <div class="section-head reveal"><div><div class="eyebrow">Education</div><h2>Riwayat <span style="color:var(--gold)">Pendidikan</span></h2></div></div>
+  <div class="grid-2 reveal">
+    <div class="info-box">
+      <h3 style="color:#fff; font-size:16px; margin-bottom:4px">SDN 1 Sawarna Timur</h3>
+      <p style="color:var(--gold-light); font-size:13px">Lulus 2017</p>
     </div>
-    <div class="edu-card reveal">
-      <h3>Madrasah Diniyah Takmiliyah Awwaliyah</h3>
-      <div class="year">Lulus 2017</div>
+    <div class="info-box">
+      <h3 style="color:#fff; font-size:16px; margin-bottom:4px">Madrasah Diniyah Takmiliyah Awwaliyah</h3>
+      <p style="color:var(--gold-light); font-size:13px">Lulus 2017</p>
     </div>
   </div>
  </div>
@@ -336,118 +357,92 @@ footer{background:var(--navy);border-top:3px solid var(--accent);padding:30px 0;
 
 <section id="contact">
  <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Contact</div><h2>Hubungi <span class="accent">Saya</span></h2></div></div>
-  <div class="about">
-   <div class="reveal">
-     <p>Saya terbuka untuk berbagai peluang kerja operasional, pelayanan pelanggan, maupun proyek digital sederhana. Jangan ragu untuk menghubungi saya melalui WhatsApp atau Email.</p>
-     <div class="socials">
+  <div class="section-head reveal"><div><div class="eyebrow">Contact</div><h2>Hubungi <span style="color:var(--gold)">Saya</span></h2></div></div>
+  <div class="card reveal">
+    <p style="margin-bottom:15px">Saya terbuka untuk berbagai peluang kerja operasional, pelayanan pelanggan, maupun proyek digital sederhana. Jangan ragu untuk menghubungi saya melalui WhatsApp atau Email.</p>
+    <div class="hero-actions">
       <a class="btn" href="https://wa.me/6283894480846" target="_blank">WhatsApp</a>
       <a class="btn ghost" href="mailto:id.erlan.maulana@gmail.com">Email</a>
-     </div>
-   </div>
+    </div>
   </div>
  </div>
 </section>
 </main>
 
-<footer><div class="container footer"><span>© 2026 Erlan Maulana. All Rights Reserved.</span><span>Lebak, Banten • id.erlan.maulana@gmail.com</span></div></footer>
+<footer>
+  <div class="container footer">
+    <span>© 2026 Erlan Maulana. All Rights Reserved.</span>
+    <span>Lebak, Banten • id.erlan.maulana@gmail.com</span>
+  </div>
+</footer>
 
 <script>
-const menu=document.getElementById('menu'),nav=document.getElementById('nav');
-menu.onclick=()=>nav.classList.toggle('open');
-document.querySelectorAll('.navlinks a').forEach(a=>{
-  a.onclick=(e)=>{
+// Mobile Nav Toggle
+const menu = document.getElementById('menu'), nav = document.getElementById('nav');
+menu.onclick = () => nav.classList.toggle('open');
+
+// Smooth Scroll Links
+document.querySelectorAll('.navlinks a').forEach(a => {
+  a.onclick = (e) => {
     nav.classList.remove('open');
-    const target=a.getAttribute('href');
+    const target = a.getAttribute('href');
     if(target && target.startsWith('#')){
       e.preventDefault();
-      const el=document.querySelector(target);
-      if(el){
-        el.scrollIntoView({behavior:'smooth'});
-      }
+      const el = document.querySelector(target);
+      if(el) el.scrollIntoView({behavior:'smooth'});
     }
   };
 });
 
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(e=>{
-   if(e.isIntersecting){
-     e.target.classList.add('show');
-     observer.unobserve(e.target);
-   }
- })
-},{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Typing Animation
+const typedMain = document.querySelector('.typed-main');
+const words = ["Erlan Maulana", "Customer Service", "Food Prep & Cooking", "Web Developer", "Teknis Lapangan"];
+let wordIdx = 0, charIdx = 0, isDeleting = false;
 
-const sections=[...document.querySelectorAll('section[id]')];
-const links=[...document.querySelectorAll('.navlinks a')];
-window.addEventListener('scroll',()=>{
- let current='home';
- sections.forEach(s=>{if(scrollY>=s.offsetTop-180) current=s.id});
- links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
-});
+function typeEffect() {
+  const currentWord = words[wordIdx];
+  if (isDeleting) {
+    charIdx--;
+  } else {
+    charIdx++;
+  }
 
-const typedPrefix=document.querySelector('.typed-prefix');
-const typedSpace=document.querySelector('.typed-space');
-const typedMain=document.querySelector('.typed-main');
+  typedMain.textContent = currentWord.substring(0, charIdx);
 
-if(typedPrefix && typedMain){
-  const sequences=[
-    {text:'Erlan Maulana', branded:true},
-    {text:'Customer Service', branded:false},
-    {text:'Food Prep & Cooking', branded:false},
-    {text:'Web Developer', branded:false},
-    {text:'Teknis Lapangan', branded:false}
-  ];
+  let speed = isDeleting ? 60 : 120;
+  if (!isDeleting && charIdx === currentWord.length) {
+    speed = 1500;
+    isDeleting = true;
+  } else if (isDeleting && charIdx === 0) {
+    isDeleting = false;
+    wordIdx = (wordIdx + 1) % words.length;
+    speed = 300;
+  }
 
-  let index=0, pos=0, deleting=false;
-
-  const render=(value, branded)=>{
-    if(branded){
-      const prefix='Erlan';
-      const prefixPart=value.slice(0, Math.min(value.length, prefix.length));
-      const rest=value.length > prefix.length ? value.slice(prefix.length) : '';
-
-      typedPrefix.textContent=prefixPart;
-      typedSpace.textContent=rest ? ' ' : '';
-      typedMain.textContent=rest;
-    }else{
-      typedPrefix.textContent='';
-      typedSpace.textContent='';
-      typedMain.textContent=value;
-    }
-  };
-
-  const tick=()=>{
-    const item=sequences[index];
-
-    if(!deleting){
-      pos++;
-      render(item.text.slice(0,pos), item.branded);
-
-      if(pos < item.text.length){
-        setTimeout(tick,115);
-      }else{
-        deleting=true;
-        setTimeout(tick,1200);
-      }
-    }else{
-      pos--;
-      render(item.text.slice(0,pos), item.branded);
-
-      if(pos > 0){
-        setTimeout(tick,70);
-      }else{
-        deleting=false;
-        index=(index+1)%sequences.length;
-        setTimeout(tick,300);
-      }
-    }
-  };
-
-  render('', true);
-  setTimeout(tick,450);
+  setTimeout(typeEffect, speed);
 }
+typeEffect();
+
+// Scroll Reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active Nav Highlight on Scroll
+const sections = [...document.querySelectorAll('section[id] me')].length ? [...document.querySelectorAll('section[id]')] : [...document.querySelectorAll('section[id]')];
+const links = [...document.querySelectorAll('.navlinks a')];
+window.addEventListener('scroll', () => {
+  let current = 'home';
+  sections.forEach(s => { if(scrollY >= s.offsetTop - 180) current = s.id; });
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+});
 </script>
 </body>
 </html>
