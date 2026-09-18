@@ -3,177 +3,1171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CV & Portofolio Erlan Maulana — Customer Service, Food Prep & Cooking, Web Developer, Teknis Lapangan. Lebak, Banten.">
+<meta name="theme-color" content="#070a13">
 <title>CV & Portofolio — Erlan Maulana</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070a13'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='28' font-weight='bold' fill='%23d4af37'%3EEM%3C/text%3E%3C/svg%3E">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
+/* ============================================================
+   ROOT VARIABLES
+   ============================================================ */
 :root {
   --bg: #070a13;
+  --bg-2: #0a0f1c;
   --bg-card: #0f172a;
   --bg-card-hover: #1e293b;
   --line: rgba(212, 175, 55, 0.25);
+  --line-soft: rgba(148, 163, 184, 0.14);
   --text: #f8fafc;
   --muted: #94a3b8;
   --navy: #0a1128;
   --gold: #d4af37;
   --gold-light: #fef08a;
+  --gold-deep: #b8860b;
   --gold-gradient: linear-gradient(135deg, #f59e0b, #d4af37, #b8860b);
   --max: 1120px;
+  --radius: 14px;
+  --shadow-lg: 0 24px 60px -24px rgba(0, 0, 0, 0.9);
+  --ease: cubic-bezier(0.22, 0.85, 0.28, 1);
 }
 
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
   line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(900px circle at 12% -5%, rgba(212, 175, 55, 0.07), transparent 55%),
+    radial-gradient(800px circle at 95% 15%, rgba(212, 175, 55, 0.045), transparent 55%),
+    radial-gradient(1000px circle at 50% 110%, rgba(212, 175, 55, 0.06), transparent 60%);
+}
+
+body.loaded { overflow-x: hidden; }
 
 a { text-decoration: none; color: inherit; }
-.container { width: min(var(--max), 92%); margin: auto; }
+button, input, textarea { font-family: inherit; }
+svg { display: block; }
 
-/* NAVBAR HEADER */
+::selection { background: rgba(212, 175, 55, 0.35); color: #fff; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #05070e; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #8a6510);
+  border-radius: 99px;
+  border: 2px solid #05070e;
+}
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #fef08a, #d4af37); }
+
+.container { width: min(var(--max), 92%); margin: auto; position: relative; z-index: 2; }
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #05070e;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.preloader.done { opacity: 0; visibility: hidden; }
+.pre-inner { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.pre-logo {
+  width: 78px; height: 78px; border-radius: 20px;
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 26px; letter-spacing: 1px;
+  color: var(--navy);
+  background: var(--gold-gradient);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.4), 0 0 45px rgba(212, 175, 55, 0.35);
+  animation: prePulse 1.8s ease-in-out infinite;
+}
+@keyframes prePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 1px rgba(212,175,55,.4), 0 0 30px rgba(212,175,55,.25); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 1px rgba(212,175,55,.7), 0 0 60px rgba(212,175,55,.5); }
+}
+.pre-bar {
+  width: 200px; height: 4px; border-radius: 99px;
+  background: rgba(148, 163, 184, 0.15);
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+.pre-bar i {
+  display: block; height: 100%; width: 40%;
+  background: var(--gold-gradient);
+  border-radius: 99px;
+  animation: preSlide 1.2s ease-in-out infinite;
+}
+@keyframes preSlide {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(310%); }
+}
+.pre-text {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); font-weight: 700;
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  background: rgba(148, 163, 184, 0.08);
+  z-index: 2100; pointer-events: none;
+}
+.scroll-progress i {
+  display: block; height: 100%; width: 0%;
+  background: var(--gold-gradient);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.8);
+  transition: width 0.1s linear;
+}
+
+/* ============================================================
+   CURSOR GLOW (desktop only)
+   ============================================================ */
+.cursor-glow {
+  position: fixed; top: 0; left: 0;
+  width: 420px; height: 420px;
+  margin: -210px 0 0 -210px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.10), transparent 62%);
+  transition: opacity 0.4s ease;
+  will-change: transform;
+}
+body.has-cursor .cursor-glow { opacity: 1; }
+
+/* ============================================================
+   HEADER / NAVBAR
+   ============================================================ */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 72px;
-  background: rgba(7, 10, 19, 0.9); backdrop-filter: blur(16px);
+  background: rgba(7, 10, 19, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 2px solid var(--gold);
+  transition: height 0.35s var(--ease), background 0.35s ease, box-shadow 0.35s ease;
 }
-.nav { height: 100%; display: flex; align-items: center; justify-content: space-between; }
-.logo { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; color: #ffffff; }
+header.scrolled {
+  height: 64px;
+  background: rgba(7, 10, 19, 0.96);
+  box-shadow: 0 14px 40px -18px rgba(0, 0, 0, 0.95);
+}
+
+.nav { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+
+.logo {
+  font-weight: 800; font-size: 19px; letter-spacing: -0.5px; color: #ffffff;
+  display: inline-flex; align-items: center; gap: 10px;
+  white-space: nowrap;
+}
+.logo-badge {
+  width: 34px; height: 34px; border-radius: 10px;
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 800; color: var(--navy);
+  background: var(--gold-gradient);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
+  transition: transform 0.4s var(--ease);
+}
+.logo:hover .logo-badge { transform: rotate(-8deg) scale(1.08); }
 .logo span { color: var(--gold); }
 
-.navlinks { display: flex; gap: 20px; align-items: center; }
-.navlinks a { font-size: 13px; color: var(--muted); transition: .25s; font-weight: 600; }
-.navlinks a:hover, .navlinks a.active { color: var(--gold-light); }
-.navlinks a.active::after {
-  content: ""; display: block; height: 2px; background: var(--gold); margin-top: 5px; border-radius: 9px;
+.navlinks { display: flex; gap: 6px; align-items: center; }
+.navlinks a {
+  position: relative;
+  font-size: 12.5px; color: var(--muted); font-weight: 600;
+  padding: 8px 10px; border-radius: 8px;
+  transition: color 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
 }
+.navlinks a::after {
+  content: ""; position: absolute; left: 50%; bottom: 2px;
+  width: 0; height: 2px; border-radius: 9px;
+  background: var(--gold-gradient);
+  transform: translateX(-50%);
+  transition: width 0.35s var(--ease);
+}
+.navlinks a:hover { color: var(--gold-light); background: rgba(212, 175, 55, 0.06); }
+.navlinks a:hover::after { width: 55%; }
+.navlinks a.active { color: var(--gold-light); }
+.navlinks a.active::after { width: 70%; box-shadow: 0 0 10px rgba(212, 175, 55, 0.7); }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; }
 
 .btn-print {
+  display: inline-flex; align-items: center; gap: 7px;
   background: var(--gold-gradient); color: var(--navy); border: none;
-  padding: 8px 18px; border-radius: 20px; font-weight: 800; font-size: 12px;
-  cursor: pointer; transition: .3s;
+  padding: 9px 16px; border-radius: 20px; font-weight: 800; font-size: 11.5px;
+  cursor: pointer; transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+  letter-spacing: 0.2px; white-space: nowrap;
 }
-.btn-print:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+.btn-print:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212, 175, 55, 0.42); }
+.btn-print:active { transform: translateY(0) scale(0.97); }
+.btn-print svg { width: 14px; height: 14px; }
 
-.menu { display: none; border: 1px solid var(--line); background: var(--bg-card); color: #fff; border-radius: 8px; padding: 8px; cursor: pointer; }
+.menu {
+  display: none; border: 1px solid var(--line); background: var(--bg-card); color: #fff;
+  border-radius: 10px; padding: 9px; cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.menu:hover { background: var(--bg-card-hover); border-color: var(--gold); }
+.menu svg { width: 20px; height: 20px; }
 
-/* SECTIONS */
-section { padding: 90px 0 40px 0; scroll-margin-top: 70px; }
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section { padding: 92px 0 44px 0; scroll-margin-top: 72px; position: relative; }
 
-/* HERO SECTION */
-.hero { min-height: 85vh; display: flex; align-items: center; padding-top: 100px; background: linear-gradient(180deg, #070a13 0%, #0f172a 100%); }
-.kicker { color: var(--muted); font-size: 13px; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 118px; padding-bottom: 70px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #070a13 0%, #0b1120 55%, #070a13 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: -25%;
+  z-index: 0;
+  background:
+    radial-gradient(620px circle at 18% 28%, rgba(212, 175, 55, 0.11), transparent 62%),
+    radial-gradient(560px circle at 82% 72%, rgba(212, 175, 55, 0.075), transparent 62%);
+  animation: auroraMove 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes auroraMove {
+  0% { transform: translate3d(-2%, -1%, 0) scale(1); }
+  50% { transform: translate3d(2%, 2%, 0) scale(1.08); }
+  100% { transform: translate3d(-1%, 2%, 0) scale(1.03); }
+}
+.hero::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.045) 1px, transparent 1px);
+  background-size: 62px 62px;
+  mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 78%);
+}
+#heroCanvas {
+  position: absolute; inset: 0; z-index: 1;
+  opacity: 0.65; pointer-events: none;
+}
+
+.hero .container { z-index: 3; }
+
+/* Availability badge */
+.avail-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 7px 15px 7px 11px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  background: rgba(212, 175, 55, 0.07);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.9px;
+  text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 20px;
+  backdrop-filter: blur(6px);
+}
+.pulse-dot {
+  position: relative; width: 8px; height: 8px; border-radius: 50%;
+  background: #22c55e; flex: none;
+}
+.pulse-dot::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: #22c55e; animation: pulseRing 1.8s ease-out infinite;
+}
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+.kicker {
+  color: var(--muted); font-size: 12px; margin-bottom: 10px;
+  font-weight: 800; text-transform: uppercase; letter-spacing: 3px;
+}
 .kicker span { color: var(--gold); }
 
-h1 { font-size: clamp(34px, 5.5vw, 62px); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; color: #fff; }
+h1 {
+  font-size: clamp(34px, 5.6vw, 64px);
+  line-height: 1.08; letter-spacing: -1.8px;
+  margin-bottom: 20px; color: #fff; font-weight: 800;
+}
 .typed-main {
-  background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 60px rgba(212, 175, 55, 0.25);
 }
 .cursor {
-  display: inline-block; width: 3px; height: .8em; background: var(--gold-light); margin-left: 4px; animation: blink .8s infinite; vertical-align: -2px;
+  display: inline-block; width: 3px; height: 0.82em;
+  background: var(--gold-light); margin-left: 5px;
+  animation: blink 0.85s steps(1) infinite;
+  vertical-align: -3px; border-radius: 2px;
+  box-shadow: 0 0 12px rgba(254, 240, 138, 0.8);
 }
 @keyframes blink { 50% { opacity: 0; } }
 
-.role { font-size: 15px; color: var(--gold-light); margin-bottom: 18px; font-weight: 600; }
-.role .dot { color: var(--gold); margin: 0 6px; }
-.desc { max-width: 680px; color: var(--muted); font-size: 14.5px; line-height: 1.8; }
+.role {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 6px 4px;
+  font-size: 13px; color: var(--gold-light);
+  margin-bottom: 20px; font-weight: 600;
+}
+.role .role-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 11px; border-radius: 99px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  transition: transform 0.3s var(--ease), background 0.3s ease;
+}
+.role .role-item:hover {
+  transform: translateY(-2px);
+  background: rgba(212, 175, 55, 0.16);
+}
+.role .role-item svg { width: 13px; height: 13px; color: var(--gold); }
 
-.hero-actions { display: flex; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
+.desc {
+  max-width: 680px; color: var(--muted);
+  font-size: 14.5px; line-height: 1.85;
+}
+
+.hero-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+
 .btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 12px 24px; border-radius: 6px; background: var(--gold-gradient);
-  color: var(--navy); font-size: 13px; font-weight: 800; transition: .25s; border: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 13px 25px; border-radius: 9px; background: var(--gold-gradient);
+  color: var(--navy); font-size: 13px; font-weight: 800; transition: 0.28s var(--ease);
+  border: none; cursor: pointer; position: relative; overflow: hidden;
+  letter-spacing: 0.2px;
 }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); }
-.btn.ghost { background: transparent; color: #fff; border: 1px solid var(--line); }
-.btn.ghost:hover { background: var(--bg-card-hover); border-color: var(--gold); color: var(--gold-light); }
+.btn svg { width: 16px; height: 16px; }
+.btn::after {
+  content: ""; position: absolute; top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.65s var(--ease);
+}
+.btn:hover::after { left: 140%; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(212, 175, 55, 0.35); }
+.btn:active { transform: translateY(-1px) scale(0.98); }
 
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 45px; }
-.stat { border-left: 3px solid var(--gold); padding: 12px 18px; background: rgba(255,255,255,0.03); border-radius: 0 8px 8px 0; }
-.stat b { font-size: 16px; color: #fff; display: block; }
-.stat small { color: var(--muted); font-size: 11px; }
+.btn.ghost {
+  background: transparent; color: #fff;
+  border: 1px solid var(--line);
+}
+.btn.ghost:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+.btn.ghost::after { display: none; }
 
-/* HEADINGS */
-.section-head { margin-bottom: 28px; border-left: 4px solid var(--gold); padding-left: 16px; }
-.eyebrow { font-size: 11px; color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
-h2 { font-size: 30px; letter-spacing: -1px; color: #fff; }
+/* Hero stats (original 3) */
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-top: 48px;
+}
+.stat {
+  display: flex; align-items: center; gap: 12px;
+  border-left: 3px solid var(--gold);
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.028);
+  border-radius: 0 10px 10px 0;
+  transition: background 0.3s ease, transform 0.3s var(--ease);
+}
+.stat:hover { background: rgba(212, 175, 55, 0.07); transform: translateX(4px); }
+.stat .stat-ico {
+  width: 32px; height: 32px; flex: none; border-radius: 9px;
+  display: grid; place-items: center;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  color: var(--gold);
+}
+.stat .stat-ico svg { width: 16px; height: 16px; }
+.stat b { font-size: 14.5px; color: #fff; display: block; line-height: 1.25; }
+.stat small { color: var(--muted); font-size: 10.5px; letter-spacing: 0.4px; text-transform: uppercase; font-weight: 600; }
 
-/* CARDS & CONTENT */
+/* Scroll hint */
+.scroll-hint {
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+  z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 7px;
+  color: var(--muted); font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-weight: 700; pointer-events: none;
+  animation: hintFloat 2.6s ease-in-out infinite;
+}
+.scroll-hint .mouse {
+  width: 20px; height: 32px; border-radius: 12px;
+  border: 1.5px solid rgba(212, 175, 55, 0.5); position: relative;
+}
+.scroll-hint .mouse::after {
+  content: ""; position: absolute; top: 6px; left: 50%;
+  width: 3px; height: 6px; margin-left: -1.5px; border-radius: 3px;
+  background: var(--gold);
+  animation: wheelMove 1.6s ease-in-out infinite;
+}
+@keyframes wheelMove {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(9px); opacity: 0.2; }
+}
+@keyframes hintFloat {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -6px); }
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.9), rgba(10, 17, 40, 0.9));
+  padding: 16px 0;
+  z-index: 3;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-track {
+  display: flex; align-items: center; gap: 30px;
+  width: max-content;
+  animation: marqueeScroll 34s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track span {
+  font-size: 12.5px; font-weight: 700; letter-spacing: 1.6px;
+  text-transform: uppercase; color: rgba(248, 250, 252, 0.72);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+.marquee-track span:hover { color: var(--gold-light); }
+.mq-dot {
+  width: 7px; height: 7px; flex: none;
+  background: var(--gold); border-radius: 2px;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+}
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.section-head {
+  margin-bottom: 30px;
+  border-left: 4px solid var(--gold);
+  padding-left: 18px;
+  position: relative;
+}
+.section-head::before {
+  content: ""; position: absolute; left: -4px; top: 0;
+  width: 4px; height: 100%;
+  background: var(--gold-gradient);
+  box-shadow: 0 0 22px rgba(212, 175, 55, 0.55);
+  border-radius: 9px;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 10.5px; color: var(--gold); font-weight: 800;
+  text-transform: uppercase; letter-spacing: 2.4px; margin-bottom: 6px;
+}
+.eyebrow svg { width: 13px; height: 13px; }
+h2 { font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -1px; color: #fff; font-weight: 800; }
+h2 em { font-style: normal; color: var(--gold); }
+
+/* ============================================================
+   CARDS
+   ============================================================ */
 .card {
-  padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-card);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-top: 10px; transition: .3s;
+  position: relative;
+  padding: 28px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.96), rgba(10, 17, 40, 0.96));
+  box-shadow: var(--shadow-lg);
+  margin-top: 10px; transition: 0.35s var(--ease);
+  overflow: hidden;
+  isolation: isolate;
 }
-.card:hover { border-color: var(--gold); transform: translateY(-2px); }
-.card p { color: #cbd5e1; font-size: 14.5px; line-height: 1.8; }
+.card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit; opacity: 0;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(212, 175, 55, 0.13), transparent 62%);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.card:hover::before { opacity: 1; }
+.card::after {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold-gradient);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s var(--ease);
+}
+.card:hover::after { transform: scaleX(1); }
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 1), 0 0 0 1px rgba(212, 175, 55, 0.08);
+}
+.card p { color: #cbd5e1; font-size: 14.5px; line-height: 1.85; }
 .card b { color: var(--gold-light); }
 
+/* ============================================================
+   GRID & INFO BOX
+   ============================================================ */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
-.info-box {
-  background: var(--bg-card); border: 1px solid var(--line); border-left: 3px solid var(--gold);
-  padding: 16px 20px; border-radius: 8px; transition: .3s;
-}
-.info-box h4 { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.info-box p { font-size: 14px; font-weight: 600; color: #fff; }
 
+.info-box {
+  position: relative;
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.96), rgba(10, 17, 40, 0.96));
+  border: 1px solid var(--line); border-left: 3px solid var(--gold);
+  padding: 17px 20px; border-radius: 10px;
+  transition: 0.32s var(--ease);
+  display: flex; gap: 14px; align-items: flex-start;
+  overflow: hidden;
+}
+.info-box:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.55);
+  background: var(--bg-card-hover);
+  box-shadow: 0 20px 45px -22px rgba(0, 0, 0, 0.95);
+}
+.info-box .ib-ico {
+  width: 40px; height: 40px; flex: none; border-radius: 11px;
+  display: grid; place-items: center;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: var(--gold);
+  transition: transform 0.4s var(--ease);
+}
+.info-box:hover .ib-ico { transform: rotate(-7deg) scale(1.07); }
+.info-box .ib-ico svg { width: 19px; height: 19px; }
+.info-box h4 {
+  font-size: 11px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 1.2px; margin-bottom: 3px; font-weight: 700;
+}
+.info-box p { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.4; }
+.info-box small { display: block; font-size: 12px; color: var(--gold-light); font-weight: 600; margin-top: 2px; }
+
+/* ============================================================
+   CUSTOM LIST
+   ============================================================ */
 .custom-list { list-style: none; }
-.custom-list li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 14px; color: #cbd5e1; }
-.custom-list li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); }
+.custom-list li {
+  position: relative; padding-left: 24px; margin-bottom: 12px;
+  font-size: 13.8px; color: #cbd5e1; line-height: 1.72;
+}
+.custom-list li:last-child { margin-bottom: 0; }
+.custom-list li::before {
+  content: ""; position: absolute; left: 3px; top: 8px;
+  width: 7px; height: 7px; border-radius: 2px;
+  background: var(--gold-gradient);
+  transform: rotate(45deg);
+  box-shadow: 0 0 9px rgba(212, 175, 55, 0.75);
+}
 .custom-list li b { color: var(--gold-light); }
 
-/* SKILL BARS */
-.skill-row { margin-bottom: 18px; }
-.skill-meta { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #fff; }
-.skill-meta span.desc-text { font-size: 12px; color: var(--muted); display: block; font-weight: 400; margin-top: 2px; }
-.skill-meta b { color: var(--gold-light); font-weight: 700; }
-.skill-level { height: 8px; background: #1e293b; border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
-.skill-level i { display: block; height: 100%; background: var(--gold-gradient); border-radius: 99px; }
-
-.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
-.tag { background: rgba(212, 175, 55, 0.12); color: var(--gold-light); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); }
-
-/* SCROLL REVEAL ANIMATION */
-.reveal { opacity: 0; transform: translateY(25px); transition: opacity .6s ease-out, transform .6s ease-out; }
-.reveal.show { opacity: 1; transform: translateY(0); }
-
-/* FOOTER */
-footer { background: #04060c; border-top: 1px solid var(--line); padding: 30px 0; color: var(--muted); font-size: 12px; margin-top: 50px; }
-.footer { display: flex; justify-content: space-between; gap: 15px; }
-
-/* PRINT MEDIA OVERRIDE */
-@media print {
-  header, .btn-print, .hero-actions { display: none !important; }
-  body { background: #fff !important; color: #000 !important; }
-  section { padding: 15px 0 !important; }
-  .card, .info-box { background: #fff !important; border: 1px solid #ccc !important; color: #000 !important; }
-  .card p, .custom-list li, h2, h1 { color: #000 !important; }
-  .typed-main { -webkit-text-fill-color: #000 !important; }
+/* ============================================================
+   COUNTER STRIP
+   ============================================================ */
+.counter-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px; margin-top: 20px;
+}
+.counter-card {
+  position: relative;
+  padding: 22px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.96), rgba(10, 17, 40, 0.96));
+  text-align: center;
+  overflow: hidden;
+  transition: 0.35s var(--ease);
+}
+.counter-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 24px 50px -26px rgba(0, 0, 0, 1);
+}
+.counter-card .cc-ico {
+  width: 38px; height: 38px; margin: 0 auto 12px;
+  border-radius: 11px; display: grid; place-items: center;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  color: var(--gold);
+}
+.counter-card .cc-ico svg { width: 18px; height: 18px; }
+.counter-card b {
+  display: block;
+  font-size: 30px; font-weight: 800; letter-spacing: -1.2px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+.counter-card small {
+  display: block; margin-top: 5px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: 1.3px;
+  text-transform: uppercase; color: var(--muted);
 }
 
-@media (max-width: 800px) {
+/* ============================================================
+   SERVICE CARDS
+   ============================================================ */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+.service-card {
+  position: relative;
+  padding: 22px 20px;
+  border-radius: 13px;
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.92), rgba(10, 17, 40, 0.92));
+  transition: 0.35s var(--ease);
+  overflow: hidden;
+}
+.service-card::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 0%), rgba(212, 175, 55, 0.12), transparent 65%);
+  opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+}
+.service-card:hover::before { opacity: 1; }
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 26px 55px -28px rgba(0, 0, 0, 1);
+}
+.sc-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: grid; place-items: center;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  color: var(--gold);
+  margin-bottom: 14px;
+  transition: 0.4s var(--ease);
+}
+.service-card:hover .sc-icon {
+  background: var(--gold-gradient);
+  color: var(--navy);
+  transform: rotate(-6deg) scale(1.08);
+  box-shadow: 0 10px 26px rgba(212, 175, 55, 0.35);
+}
+.sc-icon svg { width: 21px; height: 21px; }
+.service-card h3 {
+  font-size: 14.5px; color: #fff; margin-bottom: 6px; font-weight: 700;
+  letter-spacing: -0.2px;
+}
+.service-card p { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+
+/* Tags */
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold-light); padding: 6px 14px; border-radius: 20px;
+  font-size: 11.5px; font-weight: 700; border: 1px solid var(--line);
+  transition: 0.3s var(--ease);
+}
+.tag::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); flex: none;
+}
+.tag:hover {
+  background: rgba(212, 175, 55, 0.22);
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+/* ============================================================
+   TIMELINE (EXPERIENCE)
+   ============================================================ */
+.timeline { position: relative; padding-left: 0; }
+.timeline::before {
+  content: ""; position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.7) 12%, rgba(212, 175, 55, 0.7) 88%, transparent);
+  border-radius: 9px;
+}
+.tl-item {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 22px;
+}
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -13px; top: 24px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg-2);
+  border: 2px solid var(--gold);
+  display: grid; place-items: center;
+  color: var(--gold);
+  box-shadow: 0 0 0 5px rgba(7, 10, 19, 1), 0 0 20px rgba(212, 175, 55, 0.45);
+  z-index: 3;
+  transition: 0.35s var(--ease);
+}
+.tl-dot svg { width: 12px; height: 12px; }
+.tl-item:hover .tl-dot {
+  background: var(--gold-gradient);
+  color: var(--navy);
+  transform: scale(1.12);
+  box-shadow: 0 0 0 5px rgba(7, 10, 19, 1), 0 0 30px rgba(212, 175, 55, 0.8);
+}
+.tl-item .card { margin-top: 0; }
+
+.tl-head {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 8px 12px; margin-bottom: 8px;
+}
+.tl-date {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 10.5px; font-weight: 800; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--navy);
+  background: var(--gold-gradient);
+  padding: 5px 12px; border-radius: 99px;
+  box-shadow: 0 6px 18px -8px rgba(212, 175, 55, 0.9);
+}
+.tl-date svg { width: 12px; height: 12px; }
+.tl-type {
+  font-size: 10px; font-weight: 800; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--gold-light);
+  border: 1px solid var(--line);
+  padding: 4px 10px; border-radius: 99px;
+  background: rgba(212, 175, 55, 0.07);
+}
+.tl-item h3 {
+  color: #fff; font-size: 17px; font-weight: 700;
+  letter-spacing: -0.3px; margin-bottom: 3px;
+}
+.tl-place {
+  color: var(--muted); font-size: 12.5px; font-style: italic;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 7px;
+}
+.tl-place svg { width: 13px; height: 13px; color: var(--gold); flex: none; }
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skill-row { margin-bottom: 22px; }
+.skill-row:last-child { margin-bottom: 0; }
+.skill-meta {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 14px; margin-bottom: 9px;
+}
+.skill-meta .sm-title {
+  font-size: 14px; font-weight: 700; color: #fff;
+  display: flex; align-items: center; gap: 9px;
+}
+.skill-meta .sm-title svg { width: 15px; height: 15px; color: var(--gold); flex: none; }
+.skill-meta span.desc-text {
+  display: block; font-size: 12px; color: var(--muted);
+  font-weight: 400; margin-top: 4px; line-height: 1.65;
+}
+.skill-meta b {
+  color: var(--gold-light); font-weight: 800; font-size: 14px;
+  white-space: nowrap; min-width: 46px; text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.skill-level {
+  height: 9px; background: #131c31; border-radius: 99px;
+  overflow: hidden; border: 1px solid var(--line-soft);
+  position: relative;
+}
+.skill-level i {
+  display: block; height: 100%; width: 0;
+  background: var(--gold-gradient);
+  border-radius: 99px;
+  position: relative;
+  transition: width 1.5s var(--ease);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.55);
+}
+.skill-level i::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-100%);
+  animation: barShine 2.6s ease-in-out infinite;
+}
+@keyframes barShine {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(220%); }
+}
+.reveal.show .skill-level i { width: var(--w, 0%); }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 18px;
+  align-items: start;
+}
+.contact-actions {
+  display: flex; flex-direction: column; gap: 12px; margin-top: 20px;
+}
+.contact-line {
+  display: flex; align-items: center; gap: 13px;
+  padding: 13px 15px; border-radius: 11px;
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.02);
+  transition: 0.3s var(--ease);
+  cursor: pointer; text-align: left; width: 100%;
+  color: inherit; font-size: inherit;
+}
+.contact-line:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.07);
+  transform: translateX(4px);
+}
+.contact-line .cl-ico {
+  width: 38px; height: 38px; flex: none; border-radius: 10px;
+  display: grid; place-items: center;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  color: var(--gold);
+  transition: 0.35s var(--ease);
+}
+.contact-line:hover .cl-ico {
+  background: var(--gold-gradient);
+  color: var(--navy);
+  transform: rotate(-6deg);
+}
+.contact-line .cl-ico svg { width: 17px; height: 17px; }
+.contact-line b { display: block; font-size: 13.5px; color: #fff; font-weight: 700; }
+.contact-line small { font-size: 11.5px; color: var(--muted); word-break: break-all; }
+
+/* Form */
+.contact-form { display: grid; gap: 13px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-size: 10.5px; font-weight: 800; letter-spacing: 1.3px;
+  text-transform: uppercase; color: var(--muted);
+}
+.field input, .field textarea {
+  width: 100%;
+  background: rgba(7, 10, 19, 0.75);
+  border: 1px solid var(--line-soft);
+  border-radius: 9px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 13.5px;
+  transition: 0.28s ease;
+  resize: vertical;
+  outline: none;
+}
+.field input::placeholder, .field textarea::placeholder { color: #64748b; }
+.field input:focus, .field textarea:focus {
+  border-color: var(--gold);
+  background: rgba(7, 10, 19, 0.95);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
+}
+.form-note {
+  font-size: 11.5px; color: var(--muted); margin-top: 2px;
+  display: flex; align-items: center; gap: 7px;
+}
+.form-note svg { width: 13px; height: 13px; color: var(--gold); flex: none; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: #04060c;
+  border-top: 1px solid var(--line);
+  padding: 34px 0 26px;
+  color: var(--muted); font-size: 12px;
+  margin-top: 60px;
+  position: relative;
+}
+footer::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.7), transparent);
+}
+.footer {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 18px; flex-wrap: wrap;
+}
+.footer-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.footer .logo-badge { width: 30px; height: 30px; border-radius: 9px; font-size: 11px; }
+.footer-socials { display: flex; gap: 9px; }
+.footer-socials a {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line-soft);
+  color: var(--muted);
+  transition: 0.3s var(--ease);
+}
+.footer-socials a:hover {
+  color: var(--navy);
+  background: var(--gold-gradient);
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -8px rgba(212, 175, 55, 0.8);
+}
+.footer-socials a svg { width: 16px; height: 16px; }
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+.back-top {
+  position: fixed; right: 20px; bottom: 20px; z-index: 900;
+  width: 46px; height: 46px; border-radius: 13px;
+  display: grid; place-items: center;
+  background: var(--gold-gradient);
+  color: var(--navy); border: none; cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translateY(18px) scale(0.9);
+  transition: 0.4s var(--ease);
+  box-shadow: 0 14px 34px -12px rgba(212, 175, 55, 0.9);
+}
+.back-top.show { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.back-top:hover { transform: translateY(-4px) scale(1.05); }
+.back-top svg { width: 20px; height: 20px; }
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position: fixed; left: 50%; bottom: 28px; z-index: 3000;
+  transform: translate(-50%, 130%);
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid var(--gold);
+  color: #fff; font-size: 13px; font-weight: 700;
+  box-shadow: 0 22px 50px -18px rgba(0, 0, 0, 1), 0 0 30px -8px rgba(212, 175, 55, 0.6);
+  transition: transform 0.45s var(--ease), opacity 0.35s ease;
+  opacity: 0; pointer-events: none;
+  max-width: 90vw;
+}
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+.toast .toast-ico {
+  width: 24px; height: 24px; border-radius: 7px; flex: none;
+  display: grid; place-items: center;
+  background: var(--gold-gradient); color: var(--navy);
+}
+.toast .toast-ico svg { width: 14px; height: 14px; }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+  transition-delay: var(--d, 0s);
+  will-change: opacity, transform;
+}
+.reveal.show { opacity: 1; transform: translateY(0); }
+.reveal-left { transform: translateX(-34px); }
+.reveal-left.show { transform: translateX(0); }
+.reveal-right { transform: translateX(34px); }
+.reveal-right.show { transform: translateX(0); }
+.reveal-scale { transform: scale(0.94); }
+.reveal-scale.show { transform: scale(1); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 980px) {
   .navlinks {
-    position: absolute; top: 72px; left: 0; right: 0; background: var(--bg-card);
-    padding: 20px; display: none; flex-direction: column; align-items: flex-start; border-bottom: 1px solid var(--line);
+    position: absolute; top: 72px; left: 0; right: 0;
+    background: rgba(15, 23, 42, 0.99);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 16px 20px 22px;
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 4px;
+    border-bottom: 2px solid var(--gold);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 1);
+    opacity: 0; visibility: hidden; transform: translateY(-14px);
+    transition: 0.35s var(--ease);
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
   }
-  .navlinks.open { display: flex; }
-  .menu { display: block; }
+  .navlinks.open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .navlinks a {
+    padding: 13px 14px; font-size: 14px; border-radius: 10px;
+    border: 1px solid transparent;
+  }
+  .navlinks a:hover { border-color: var(--line-soft); }
+  .navlinks a::after { display: none; }
+  .navlinks a.active {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--line);
+  }
+  .menu { display: grid; place-items: center; }
+  .btn-print .print-label { display: none; }
+  .btn-print { padding: 9px 12px; }
+  header.scrolled .navlinks { top: 64px; }
+}
+
+@media (max-width: 760px) {
+  section { padding: 74px 0 34px 0; }
+  .hero { min-height: auto; padding-top: 106px; padding-bottom: 80px; }
   .stats { grid-template-columns: 1fr; }
-  .footer { flex-direction: column; }
+  .stat:hover { transform: none; }
+  .scroll-hint { display: none; }
+  .card { padding: 22px 18px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .tl-item { padding-left: 32px; }
+  .tl-dot { left: -12px; width: 24px; height: 24px; top: 20px; }
+  .footer { flex-direction: column; align-items: flex-start; }
+  .back-top { right: 14px; bottom: 14px; width: 44px; height: 44px; }
+  .role { font-size: 12px; }
+  .logo { font-size: 16px; }
+  .logo-badge { width: 30px; height: 30px; border-radius: 9px; font-size: 11.5px; }
+  .service-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .service-card { padding: 18px 16px; }
+  .sc-icon { width: 38px; height: 38px; }
+  .sc-icon svg { width: 18px; height: 18px; }
+}
+
+@media (max-width: 480px) {
+  .container { width: 94%; }
+  h1 { font-size: 30px; letter-spacing: -1px; }
+  h2 { font-size: 22px; }
+  .btn { width: 100%; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+  .service-grid { grid-template-columns: 1fr; }
+  .counter-strip { grid-template-columns: 1fr 1fr; }
+  .counter-card { padding: 18px 12px; }
+  .counter-card b { font-size: 24px; }
+  .skills .card { padding: 20px 15px; }
+  .tl-head { flex-direction: column; align-items: flex-start; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+  header, .btn-print, .hero-actions, .back-top, .scroll-progress,
+  .preloader, .marquee, .scroll-hint, .cursor-glow, .toast,
+  .contact-form, #heroCanvas, .footer-socials { display: none !important; }
+
+  html, body { background: #fff !important; color: #000 !important; }
+  body::before { display: none !important; }
+  section { padding: 12px 0 !important; page-break-inside: avoid; }
+  .hero { min-height: auto !important; padding: 0 0 10px !important; background: none !important; }
+  .hero::before, .hero::after { display: none !important; }
+  .container { width: 100% !important; }
+
+  .card, .info-box, .service-card, .counter-card {
+    background: #fff !important;
+    border: 1px solid #bbb !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    page-break-inside: avoid;
+  }
+  .card::before, .card::after, .service-card::before { display: none !important; }
+
+  .card p, .custom-list li, h2, h1, .tl-item h3, .info-box p,
+  .service-card p, .service-card h3, .skill-meta .sm-title { color: #000 !important; }
+  .card b, .custom-list li b, .info-box small { color: #7a5c00 !important; }
+  .desc, .tl-place, .skill-meta span.desc-text, .service-card p { color: #333 !important; }
+
+  .typed-main {
+    -webkit-text-fill-color: #000 !important;
+    background: none !important; color: #000 !important;
+  }
+  .cursor { display: none !important; }
+  .logo span, h2 em { color: #7a5c00 !important; }
+
+  .skill-level { border: 1px solid #999 !important; background: #eee !important; }
+  .skill-level i { background: #b8860b !important; box-shadow: none !important; }
+  .skill-level i::after { display: none !important; }
+
+  .tl-date { background: #eee !important; color: #000 !important; box-shadow: none !important; }
+  .tl-dot { border-color: #666 !important; background: #fff !important; color: #000 !important; box-shadow: none !important; }
+  .timeline::before { background: #999 !important; }
+  .tag { border-color: #bbb !important; color: #000 !important; background: #f4f4f4 !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  a { color: #000 !important; }
 }
 </style>
 </head>
 <body>
 
-<header>
+<!-- ================= PRELOADER ================= -->
+<div class="preloader" id="preloader">
+  <div class="pre-inner">
+    <div class="pre-logo">EM</div>
+    <div class="pre-bar"><i></i></div>
+    <div class="pre-text">Menyiapkan Portofolio</div>
+  </div>
+</div>
+
+<!-- ================= SCROLL PROGRESS ================= -->
+<div class="scroll-progress" aria-hidden="true"><i id="scrollBar"></i></div>
+
+<!-- ================= CURSOR GLOW ================= -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- ================= HEADER ================= -->
+<header id="siteHeader">
   <div class="container nav">
-    <a class="logo" href="#home">ERLAN <span>MAULANA</span></a>
-    <button class="menu" id="menu" aria-label="Menu">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-    <nav class="navlinks" id="nav">
+    <a class="logo" href="#home" aria-label="Erlan Maulana - Beranda">
+      <span class="logo-badge">EM</span>
+      <span style="color:#fff">ERLAN <span>MAULANA</span></span>
+    </a>
+
+    <nav class="navlinks" id="nav" aria-label="Navigasi utama">
       <a class="active" href="#home">Home</a>
       <a href="#about">Ringkasan</a>
       <a href="#services">Layanan</a>
@@ -182,267 +1176,1303 @@ footer { background: #04060c; border-top: 1px solid var(--line); padding: 30px 0
       <a href="#education">Pendidikan</a>
       <a href="#contact">Kontak</a>
     </nav>
-    <button class="btn-print" onclick="window.print()">Cetak / PDF</button>
+
+    <div class="nav-actions">
+      <button class="btn-print" onclick="window.print()" aria-label="Cetak atau simpan sebagai PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/>
+        </svg>
+        <span class="print-label">Cetak / PDF</span>
+      </button>
+      <button class="menu" id="menu" aria-label="Buka menu navigasi" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </header>
 
 <main>
+
+<!-- ================= HERO ================= -->
 <section class="hero" id="home">
- <div class="container">
-   <div class="reveal">
-    <div class="kicker"><span>Hello</span></div>
-    <h1><span class="typed-prefix">I'm </span><span class="typed-main"></span><i class="cursor"></i></h1>
-    <div class="role">Customer Service<span class="dot">•</span>Food Prep & Cooking<span class="dot">•</span>Web Developer<span class="dot">•</span>Teknis Lapangan</div>
-    <p class="desc">Pekerja keras, disiplin, dan berdedikasi tinggi dengan pengalaman di bidang pelayanan pelanggan (customer service), pengolahan makanan (food prep/cooking), serta pekerjaan teknis lapangan. Memiliki etos kerja yang kuat, cepat beradaptasi, serta terbiasa bekerja secara mandiri maupun dalam tim.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#contact">Contact</a>
-      <a class="btn ghost" href="#experience">Experience</a>
-    </div>
-   </div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="reveal">
+      <div class="avail-badge">
+        <span class="pulse-dot"></span>
+        Terbuka untuk Peluang Kerja
+      </div>
 
-  <div class="stats reveal">
-    <div class="stat"><b>Lebak, Banten</b><small>Domisili Utama</small></div>
-    <div class="stat"><b>Aktif</b><small>Bahasa Indonesia</small></div>
-    <div class="stat"><b>Pasif</b><small>Bahasa Inggris</small></div>
+      <div class="kicker"><span>Hello</span> — Welcome</div>
+
+      <h1>
+        <span class="typed-prefix">I'm </span><span class="typed-main">Erlan Maulana</span><i class="cursor" aria-hidden="true"></i>
+      </h1>
+
+      <div class="role">
+        <span class="role-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+          </svg>
+          Customer Service
+        </span>
+        <span class="role-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11h18"/><path d="M12 3v8"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21h8"/>
+          </svg>
+          Food Prep &amp; Cooking
+        </span>
+        <span class="role-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/>
+          </svg>
+          Web Developer
+        </span>
+        <span class="role-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a4 4 0 0 0 5 5L21 12l-9 9-3-3 9-9z"/><path d="M3 21l4.5-4.5"/>
+          </svg>
+          Teknis Lapangan
+        </span>
+      </div>
+
+      <p class="desc">Pekerja keras, disiplin, dan berdedikasi tinggi dengan pengalaman di bidang pelayanan pelanggan (customer service), pengolahan makanan (food prep/cooking), serta pekerjaan teknis lapangan. Memiliki etos kerja yang kuat, cepat beradaptasi, serta terbiasa bekerja secara mandiri maupun dalam tim.</p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/>
+          </svg>
+          Hubungi Saya
+        </a>
+        <a class="btn ghost" href="#experience">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7.5h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-11Z"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/>
+          </svg>
+          Lihat Pengalaman
+        </a>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </span>
+          <div>
+            <b>Lebak, Banten</b>
+            <small>Domisili Utama</small>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/>
+            </svg>
+          </span>
+          <div>
+            <b>Aktif</b>
+            <small>Bahasa Indonesia</small>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v6h6"/>
+            </svg>
+          </span>
+          <div>
+            <b>Pasif</b>
+            <small>Bahasa Inggris</small>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
- </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="mouse"></div>
+    <span>Scroll</span>
+  </div>
 </section>
 
+<!-- ================= ABOUT ================= -->
 <section id="about">
- <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Brief profile</div><h2>Ringkasan <span style="color:var(--gold)">Profil</span></h2></div></div>
-  <div class="card reveal">
-    <p>Pekerja keras, disiplin, dan berdedikasi tinggi dengan pengalaman kerja di bidang <b>pelayanan pelanggan (customer service)</b>, <b>pengolahan makanan (food prep/cooking)</b>, serta <b>pekerjaan teknis lapangan</b>.</p>
-    <p style="margin-top:12px">Memiliki etos kerja yang kuat, cepat beradaptasi dengan lingkungan kerja baru, serta terbiasa bekerja secara mandiri maupun dalam tim untuk mencapai target operasional harian.</p>
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>
+          </svg>
+          Brief Profile
+        </div>
+        <h2>Ringkasan <em>Profil</em></h2>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <p>Pekerja keras, disiplin, dan berdedikasi tinggi dengan pengalaman kerja di bidang <b>pelayanan pelanggan (customer service)</b>, <b>pengolahan makanan (food prep/cooking)</b>, serta <b>pekerjaan teknis lapangan</b>.</p>
+      <p style="margin-top:12px">Memiliki etos kerja yang kuat, cepat beradaptasi dengan lingkungan kerja baru, serta terbiasa bekerja secara mandiri maupun dalam tim untuk mencapai target operasional harian.</p>
+    </div>
+
+    <div class="counter-strip reveal" style="--d:0.1s">
+      <div class="counter-card">
+        <span class="cc-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 14l9 5 9-5"/>
+          </svg>
+        </span>
+        <b><span class="counter" data-target="5" data-suffix="+">0</span></b>
+        <small>Bidang Pengalaman</small>
+      </div>
+      <div class="counter-card">
+        <span class="cc-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/>
+          </svg>
+        </span>
+        <b><span class="counter" data-target="3" data-suffix="+">0</span></b>
+        <small>Sektor Industri</small>
+      </div>
+      <div class="counter-card">
+        <span class="cc-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/>
+          </svg>
+        </span>
+        <b><span class="counter" data-target="100" data-suffix="%">0</span></b>
+        <small>Dedikasi Kerja</small>
+      </div>
+      <div class="counter-card">
+        <span class="cc-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+          </svg>
+        </span>
+        <b><span class="counter" data-target="24" data-suffix="/7">0</span></b>
+        <small>Siap Bekerja</small>
+      </div>
+    </div>
   </div>
-  </div>
- </div>
 </section>
 
+<!-- ================= SERVICES ================= -->
 <section id="services">
- <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Digital Services</div><h2>Web Developer & <span style="color:var(--gold)">Digital Builder</span></h2></div></div>
-  <div class="card reveal">
-    <p>Web Developer & Digital Builder dengan kemampuan membangun semua jenis website: <b>Portfolio, Company Profile, E-Commerce, Landing Page, Web App Dan Lain-Lain</b>. Selain itu juga mampu mengembangkan <b>AI, membuat Tools otomasi, Game Web, dan Desain Dokumen CV PDF</b>. Melayani kebutuhan digital untuk Personal maupun Bisnis dengan hasil yang cepat, rapi, dan fungsional. Menguasai <b>HTML, CSS, JavaScript</b>.</p>
-    <div class="tags">
-      <span class="tag">Portfolio</span>
-      <span class="tag">Company Profile</span>
-      <span class="tag">E-Commerce</span>
-      <span class="tag">Landing Page</span>
-      <span class="tag">Web App</span>
-      <span class="tag">AI Development</span>
-      <span class="tag">Tools Otomasi</span>
-      <span class="tag">Game Web</span>
-      <span class="tag">Desain CV PDF</span>
-      <span class="tag">Dan Lain-Lain</span>
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/>
+          </svg>
+          Digital Services
+        </div>
+        <h2>Web Developer &amp; <em>Digital Builder</em></h2>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <p>Web Developer &amp; Digital Builder dengan kemampuan membangun semua jenis website: <b>Portfolio, Company Profile, E-Commerce, Landing Page, Web App Dan Lain-Lain</b>. Selain itu juga mampu mengembangkan <b>AI, membuat Tools otomasi, Game Web, dan Desain Dokumen CV PDF</b>. Melayani kebutuhan digital untuk Personal maupun Bisnis dengan hasil yang cepat, rapi, dan fungsional. Menguasai <b>HTML, CSS, JavaScript</b>.</p>
+
+      <div class="tags">
+        <span class="tag">Portfolio</span>
+        <span class="tag">Company Profile</span>
+        <span class="tag">E-Commerce</span>
+        <span class="tag">Landing Page</span>
+        <span class="tag">Web App</span>
+        <span class="tag">AI Development</span>
+        <span class="tag">Tools Otomasi</span>
+        <span class="tag">Game Web</span>
+        <span class="tag">Desain CV PDF</span>
+        <span class="tag">Dan Lain-Lain</span>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7.5h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-11Z"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/>
+            </svg>
+          </span>
+          <h3>Portfolio</h3>
+          <p>Website personal branding yang rapi, modern, dan siap dipakai melamar kerja.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M14 9h4a2 2 0 0 1 2 2v10"/><path d="M8 7h2M8 11h2M8 15h2M17 13h1M17 17h1M2 21h20"/>
+            </svg>
+          </span>
+          <h3>Company Profile</h3>
+          <p>Profil perusahaan profesional untuk meningkatkan kredibilitas bisnis Anda.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/>
+              <path d="M2.5 3.5h2.2l2.3 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6l1.4-7.1H6"/>
+            </svg>
+          </span>
+          <h3>E-Commerce</h3>
+          <p>Toko online fungsional dengan alur belanja sederhana dan cepat diakses.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>
+            </svg>
+          </span>
+          <h3>Landing Page</h3>
+          <p>Halaman promosi fokus konversi untuk produk, jasa, atau event tertentu.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/>
+            </svg>
+          </span>
+          <h3>Web App</h3>
+          <p>Aplikasi berbasis web ringan sesuai kebutuhan operasional harian.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="7" y="7" width="10" height="10" rx="2"/>
+              <path d="M10.5 3v4M13.5 3v4M10.5 17v4M13.5 17v4M3 10.5h4M3 13.5h4M17 10.5h4M17 13.5h4"/>
+            </svg>
+          </span>
+          <h3>AI Development</h3>
+          <p>Eksplorasi dan pengembangan fitur berbasis kecerdasan buatan.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.1-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.56-1.1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.56 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1Z"/>
+            </svg>
+          </span>
+          <h3>Tools Otomasi</h3>
+          <p>Alat bantu otomatis untuk mempercepat pekerjaan berulang.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="12" rx="5"/><path d="M6 9v6M9 12H3"/>
+              <circle cx="16.5" cy="10.5" r="1"/><circle cx="18.5" cy="13.5" r="1"/>
+            </svg>
+          </span>
+          <h3>Game Web</h3>
+          <p>Permainan ringan berbasis browser yang seru dan mudah dimainkan.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="sc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>
+            </svg>
+          </span>
+          <h3>Desain CV PDF</h3>
+          <p>Dokumen CV siap cetak dengan tata letak rapi dan profesional.</p>
+        </div>
+      </div>
     </div>
   </div>
- </div>
 </section>
 
+<!-- ================= EXPERIENCE ================= -->
 <section id="experience">
- <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Experience</div><h2>Pengalaman <span style="color:var(--gold)">Kerja</span></h2></div></div>
-  <div class="grid-2 reveal">
-    <div class="card">
-      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">MARET 2026 — MEI 2026</div>
-      <h3 style="color:#fff; font-size:18px">Staff Pelayan & Produksi</h3>
-      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Cireng Mini Crunchy (Depok, Sukmajaya)</div>
-      <ul class="custom-list">
-        <li>Mengelola persiapan bahan baku dan inventaris lapak sebelum jam operasional harian.</li>
-        <li>Melayani pesanan pelanggan secara ramah, cepat, dan teratur.</li>
-        <li>Bertanggung jawab pada proses penggorengan dan penyajikan makanan sesuai standar kualitas dan kebersihan.</li>
-      </ul>
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7.5h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-11Z"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/>
+          </svg>
+          Experience
+        </div>
+        <h2>Pengalaman <em>Kerja</em></h2>
+      </div>
     </div>
 
-    <div class="card">
-      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">JULI 2025 — SEPTEMBER 2025</div>
-      <h3 style="color:#fff; font-size:18px">Staff Operasional & Penggorengan</h3>
-      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Ayam Kremes (Tangerang, Cipondoh)</div>
-      <ul class="custom-list">
-        <li>Mempersiapkan area kerja dan perlengkapan jualan untuk pembukaan operasional harian.</li>
-        <li>Mengatur pesanan pembeli dan memastikan kepuasan pelanggan melalui pelayanan yang responsif.</li>
-        <li>Memasak dan menyajikan menu ayam kremes dengan menjaga ketepatan waktu serta kebersihan produk.</li>
-      </ul>
-    </div>
+    <div class="timeline">
 
-    <div class="card">
-      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">JUNI 2025 — JULI 2025</div>
-      <h3 style="color:#fff; font-size:18px">Pramuniaga & Staff Lapangan</h3>
-      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Martabak Mini Laris Manis (Tangerang, Ciputat)</div>
-      <ul class="custom-list">
-        <li>Melakukan persiapan kelengkapan dagang untuk penjualan operasional keliling.</li>
-        <li>Mengirimkan dan menjajakan produk sesuai rute target penjualan yang ditentukan.</li>
-        <li>Memproses penyajikan dan memasak produk secara langsung di tempat sesuai permintaan konsumen.</li>
-      </ul>
-    </div>
+      <article class="tl-item reveal">
+        <span class="tl-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11h18"/><path d="M12 3v8"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21h8"/>
+          </svg>
+        </span>
+        <div class="card">
+          <div class="tl-head">
+            <span class="tl-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/>
+              </svg>
+              Maret 2026 — Mei 2026
+            </span>
+            <span class="tl-type">Kuliner</span>
+          </div>
+          <h3>Staff Pelayan &amp; Produksi</h3>
+          <div class="tl-place">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Cireng Mini Crunchy (Depok, Sukmajaya)
+          </div>
+          <ul class="custom-list">
+            <li>Mengelola persiapan bahan baku dan inventaris lapak sebelum jam operasional harian.</li>
+            <li>Melayani pesanan pelanggan secara ramah, cepat, dan teratur.</li>
+            <li>Bertanggung jawab pada proses penggorengan dan penyajikan makanan sesuai standar kualitas dan kebersihan.</li>
+          </ul>
+        </div>
+      </article>
 
-    <div class="card">
-      <div style="color:var(--gold); font-size:12px; font-weight:800; margin-bottom:4px">FLEKSIBEL / HARIAN</div>
-      <h3 style="color:#fff; font-size:18px">Tenaga Kerja Lapangan & Jasa Harian</h3>
-      <div style="color:var(--muted); font-size:13px; font-style:italic; margin-bottom:12px">Berbagai Sektor Industri & Jasa</div>
-      <ul class="custom-list">
-        <li><b>Pekerja Industri Gipsum:</b> Bertanggung jawab dalam proses pencetakan dan pemasangan lis gipsum secara teliti.</li>
-        <li><b>Pekerja Konstruksi/Bangunan:</b> Membantu operasional pembangunan rumah dan struktur bangunan.</li>
-        <li><b>Staff Operasional Warung Pantai:</b> Memelihara kebersihan area, melayani pengunjung, serta menyajikan makanan/minuman.</li>
-        <li><b>Pengemudi Transportasi (Ojek):</b> Memberikan layanan antar-jemput penumpang dengan mengutamakan keselamatan dan ketepatan waktu.</li>
-      </ul>
+      <article class="tl-item reveal" style="--d:0.08s">
+        <span class="tl-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11h18"/><path d="M12 3v8"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21h8"/>
+          </svg>
+        </span>
+        <div class="card">
+          <div class="tl-head">
+            <span class="tl-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/>
+              </svg>
+              Juli 2025 — September 2025
+            </span>
+            <span class="tl-type">Kuliner</span>
+          </div>
+          <h3>Staff Operasional &amp; Penggorengan</h3>
+          <div class="tl-place">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Ayam Kremes (Tangerang, Cipondoh)
+          </div>
+          <ul class="custom-list">
+            <li>Mempersiapkan area kerja dan perlengkapan jualan untuk pembukaan operasional harian.</li>
+            <li>Mengatur pesanan pembeli dan memastikan kepuasan pelanggan melalui pelayanan yang responsif.</li>
+            <li>Memasak dan menyajikan menu ayam kremes dengan menjaga ketepatan waktu serta kebersihan produk.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tl-item reveal" style="--d:0.16s">
+        <span class="tl-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/>
+            <path d="M2.5 3.5h2.2l2.3 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6l1.4-7.1H6"/>
+          </svg>
+        </span>
+        <div class="card">
+          <div class="tl-head">
+            <span class="tl-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/>
+              </svg>
+              Juni 2025 — Juli 2025
+            </span>
+            <span class="tl-type">Penjualan</span>
+          </div>
+          <h3>Pramuniaga &amp; Staff Lapangan</h3>
+          <div class="tl-place">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Martabak Mini Laris Manis (Tangerang, Ciputat)
+          </div>
+          <ul class="custom-list">
+            <li>Melakukan persiapan kelengkapan dagang untuk penjualan operasional keliling.</li>
+            <li>Mengirimkan dan menjajakan produk sesuai rute target penjualan yang ditentukan.</li>
+            <li>Memproses penyajikan dan memasak produk secara langsung di tempat sesuai permintaan konsumen.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tl-item reveal" style="--d:0.24s">
+        <span class="tl-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a4 4 0 0 0 5 5L21 12l-9 9-3-3 9-9z"/><path d="M3 21l4.5-4.5"/>
+          </svg>
+        </span>
+        <div class="card">
+          <div class="tl-head">
+            <span class="tl-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+              </svg>
+              Fleksibel / Harian
+            </span>
+            <span class="tl-type">Multi Sektor</span>
+          </div>
+          <h3>Tenaga Kerja Lapangan &amp; Jasa Harian</h3>
+          <div class="tl-place">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/>
+            </svg>
+            Berbagai Sektor Industri &amp; Jasa
+          </div>
+          <ul class="custom-list">
+            <li><b>Pekerja Industri Gipsum:</b> Bertanggung jawab dalam proses pencetakan dan pemasangan lis gipsum secara teliti.</li>
+            <li><b>Pekerja Konstruksi/Bangunan:</b> Membantu operasional pembangunan rumah dan struktur bangunan.</li>
+            <li><b>Staff Operasional Warung Pantai:</b> Memelihara kebersihan area, melayani pengunjung, serta menyajikan makanan/minuman.</li>
+            <li><b>Pengemudi Transportasi (Ojek):</b> Memberikan layanan antar-jemput penumpang dengan mengutamakan keselamatan dan ketepatan waktu.</li>
+          </ul>
+        </div>
+      </article>
+
     </div>
   </div>
- </div>
 </section>
 
-<section id="skills">
- <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Skills</div><h2>Keterampilan <span style="color:var(--gold)">Utama</span></h2></div></div>
-  <div class="card reveal">
-    <div class="skill-row">
-      <div class="skill-meta">
-        <div>Kuliner & Operasional<span class="desc-text">Persiapan Bahan Makanan (Food Prep), Pengolahan & Penggorengan, Penjualan Lapak/Keliling.</span></div>
-        <b>95%</b>
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/>
+          </svg>
+          Skills
+        </div>
+        <h2>Keterampilan <em>Utama</em></h2>
       </div>
-      <div class="skill-level"><i style="width:95%"></i></div>
     </div>
 
-    <div class="skill-row">
-      <div class="skill-meta">
-        <div>Dasar Web Development<span class="desc-text">HTML, CSS, JavaScript, Bisa Membuat Website Sederhana Untuk Kebutuhan Promosi/UMKM, Personal Maupun Bisnis.</span></div>
-        <b>85%</b>
+    <div class="card reveal">
+      <div class="skill-row">
+        <div class="skill-meta">
+          <div>
+            <div class="sm-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 11h18"/><path d="M12 3v8"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M8 21h8"/>
+              </svg>
+              Kuliner &amp; Operasional
+            </div>
+            <span class="desc-text">Persiapan Bahan Makanan (Food Prep), Pengolahan &amp; Penggorengan, Penjualan Lapak/Keliling.</span>
+          </div>
+          <b><span class="counter" data-target="95" data-suffix="%">0</span></b>
+        </div>
+        <div class="skill-level"><i style="--w:95%"></i></div>
       </div>
-      <div class="skill-level"><i style="width:85%"></i></div>
-    </div>
 
-    <div class="skill-row">
-      <div class="skill-meta">
-        <div>Microsoft Office<span class="desc-text">Word, Excel.</span></div>
-        <b>80%</b>
+      <div class="skill-row">
+        <div class="skill-meta">
+          <div>
+            <div class="sm-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/>
+              </svg>
+              Dasar Web Development
+            </div>
+            <span class="desc-text">HTML, CSS, JavaScript, Bisa Membuat Website Sederhana Untuk Kebutuhan Promosi/UMKM, Personal Maupun Bisnis.</span>
+          </div>
+          <b><span class="counter" data-target="85" data-suffix="%">0</span></b>
+        </div>
+        <div class="skill-level"><i style="--w:85%"></i></div>
       </div>
-      <div class="skill-level"><i style="width:80%"></i></div>
-    </div>
 
-    <div class="skill-row">
-      <div class="skill-meta">
-        <div>Pertukangan & Teknis<span class="desc-text">Pencetakan & Pemasangan Gipsum, Dasar Konstruksi Bangunan.</span></div>
-        <b>85%</b>
+      <div class="skill-row">
+        <div class="skill-meta">
+          <div>
+            <div class="sm-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+              </svg>
+              Microsoft Office
+            </div>
+            <span class="desc-text">Word, Excel.</span>
+          </div>
+          <b><span class="counter" data-target="80" data-suffix="%">0</span></b>
+        </div>
+        <div class="skill-level"><i style="--w:80%"></i></div>
       </div>
-      <div class="skill-level"><i style="width:85%"></i></div>
-    </div>
 
-    <div class="skill-row" style="margin-bottom:0">
-      <div class="skill-meta">
-        <div>Soft Skills<span class="desc-text">Pelayanan Pelanggan (Customer Service), Manajemen Waktu, Komunikasi Ramah, Kerja Sama Tim, Adaptasi Cepat.</span></div>
-        <b>95%</b>
+      <div class="skill-row">
+        <div class="skill-meta">
+          <div>
+            <div class="sm-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a4 4 0 0 0 5 5L21 12l-9 9-3-3 9-9z"/><path d="M3 21l4.5-4.5"/>
+              </svg>
+              Pertukangan &amp; Teknis
+            </div>
+            <span class="desc-text">Pencetakan &amp; Pemasangan Gipsum, Dasar Konstruksi Bangunan.</span>
+          </div>
+          <b><span class="counter" data-target="85" data-suffix="%">0</span></b>
+        </div>
+        <div class="skill-level"><i style="--w:85%"></i></div>
       </div>
-      <div class="skill-level"><i style="width:95%"></i></div>
+
+      <div class="skill-row" style="margin-bottom:0">
+        <div class="skill-meta">
+          <div>
+            <div class="sm-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              Soft Skills
+            </div>
+            <span class="desc-text">Pelayanan Pelanggan (Customer Service), Manajemen Waktu, Komunikasi Ramah, Kerja Sama Tim, Adaptasi Cepat.</span>
+          </div>
+          <b><span class="counter" data-target="95" data-suffix="%">0</span></b>
+        </div>
+        <div class="skill-level"><i style="--w:95%"></i></div>
+      </div>
     </div>
   </div>
- </div>
 </section>
 
+<!-- ================= EDUCATION ================= -->
 <section id="education">
- <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Education</div><h2>Riwayat <span style="color:var(--gold)">Pendidikan</span></h2></div></div>
-  <div class="grid-2 reveal">
-    <div class="info-box">
-      <h3 style="color:#fff; font-size:16px; margin-bottom:4px">SDN 1 Sawarna Timur</h3>
-      <p style="color:var(--gold-light); font-size:13px">Lulus 2017</p>
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/>
+          </svg>
+          Education
+        </div>
+        <h2>Riwayat <em>Pendidikan</em></h2>
+      </div>
     </div>
-    <div class="info-box">
-      <h3 style="color:#fff; font-size:16px; margin-bottom:4px">Madrasah Diniyah Takmiliyah Awwaliyah</h3>
-      <p style="color:var(--gold-light); font-size:13px">Lulus 2017</p>
+
+    <div class="grid-2 reveal">
+      <div class="info-box">
+        <span class="ib-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/>
+          </svg>
+        </span>
+        <div>
+          <h4>Sekolah Dasar</h4>
+          <p>SDN 1 Sawarna Timur</p>
+          <small>Lulus 2017</small>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <span class="ib-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19V5a2 2 0 0 1 2-2h6l2 3h6a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/>
+          </svg>
+        </span>
+        <div>
+          <h4>Pendidikan Diniyah</h4>
+          <p>Madrasah Diniyah Takmiliyah Awwaliyah</p>
+          <small>Lulus 2017</small>
+        </div>
+      </div>
     </div>
   </div>
- </div>
 </section>
 
+<!-- ================= CONTACT ================= -->
 <section id="contact">
- <div class="container">
-  <div class="section-head reveal"><div><div class="eyebrow">Contact</div><h2>Hubungi <span style="color:var(--gold)">Saya</span></h2></div></div>
-  <div class="card reveal">
-    <p style="margin-bottom:15px">Saya terbuka untuk berbagai peluang kerja operasional, pelayanan pelanggan, maupun proyek digital sederhana. Jangan ragu untuk menghubungi saya melalui WhatsApp atau Email.</p>
-    <div class="hero-actions">
-      <a class="btn" href="https://wa.me/6283894480846" target="_blank">WhatsApp</a>
-      <a class="btn ghost" href="mailto:id.erlan.maulana@gmail.com">Email</a>
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/>
+          </svg>
+          Contact
+        </div>
+        <h2>Hubungi <em>Saya</em></h2>
+      </div>
+    </div>
+
+    <div class="contact-layout">
+      <div class="card reveal">
+        <p>Saya terbuka untuk berbagai peluang kerja operasional, pelayanan pelanggan, maupun proyek digital sederhana. Jangan ragu untuk menghubungi saya melalui WhatsApp atau Email.</p>
+
+        <div class="contact-actions">
+          <a class="contact-line" href="https://wa.me/6283894480846" target="_blank" rel="noopener">
+            <span class="cl-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.5L3 21l2-5.3A8.5 8.5 0 1 1 21 11.5Z"/>
+                <path d="M8.6 8.4c-.3.7 0 1.7.7 2.7a9 9 0 0 0 3.6 3.1c1 .4 2 .5 2.6.1"/>
+              </svg>
+            </span>
+            <div>
+              <b>WhatsApp</b>
+              <small>+62 838-9448-0846</small>
+            </div>
+          </a>
+
+          <a class="contact-line" href="mailto:id.erlan.maulana@gmail.com">
+            <span class="cl-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/>
+              </svg>
+            </span>
+            <div>
+              <b>Email</b>
+              <small>id.erlan.maulana@gmail.com</small>
+            </div>
+          </a>
+
+          <button class="contact-line" type="button" id="copyEmailBtn">
+            <span class="cl-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+            </span>
+            <div>
+              <b>Salin Alamat Email</b>
+              <small>Klik untuk menyalin ke clipboard</small>
+            </div>
+          </button>
+
+          <div class="contact-line" style="cursor:default">
+            <span class="cl-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <div>
+              <b>Domisili</b>
+              <small>Lebak, Banten — Indonesia</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="--d:0.1s">
+        <h3 style="font-size:16px; color:#fff; margin-bottom:16px; font-weight:700; letter-spacing:-0.3px">Kirim Pesan Cepat</h3>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="cName">Nama</label>
+              <input type="text" id="cName" name="nama" placeholder="Nama Anda" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cSubject">Keperluan</label>
+              <input type="text" id="cSubject" name="keperluan" placeholder="Contoh: Lamaran Kerja" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="cMsg">Pesan</label>
+            <textarea id="cMsg" name="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+          </div>
+
+          <button class="btn" type="submit" style="width:100%">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/>
+            </svg>
+            Kirim via WhatsApp
+          </button>
+
+          <div class="form-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/>
+            </svg>
+            Pesan akan diteruskan otomatis ke WhatsApp saya.
+          </div>
+        </form>
+      </div>
     </div>
   </div>
- </div>
 </section>
+
 </main>
 
+<!-- ================= FOOTER ================= -->
 <footer>
   <div class="container footer">
-    <span>© 2026 Erlan Maulana. All Rights Reserved.</span>
-    <span>Lebak, Banten • id.erlan.maulana@gmail.com</span>
+    <div class="footer-left">
+      <span class="logo-badge">EM</span>
+      <div>
+        <div style="color:#fff; font-weight:700; font-size:12.5px; margin-bottom:2px">© <span id="year">2026</span> Erlan Maulana. All Rights Reserved.</div>
+        <div style="font-size:11.5px">Lebak, Banten &nbsp;•&nbsp; id.erlan.maulana@gmail.com</div>
+      </div>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://wa.me/6283894480846" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.5L3 21l2-5.3A8.5 8.5 0 1 1 21 11.5Z"/>
+          <path d="M8.6 8.4c-.3.7 0 1.7.7 2.7a9 9 0 0 0 3.6 3.1c1 .4 2 .5 2.6.1"/>
+        </svg>
+      </a>
+      <a href="mailto:id.erlan.maulana@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/>
+        </svg>
+      </a>
+      <a href="#home" aria-label="Kembali ke atas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </footer>
 
+<!-- ================= BACK TO TOP ================= -->
+<button class="back-top" id="backTop" aria-label="Kembali ke atas">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="toast-ico">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m5 13 4 4L19 7"/>
+    </svg>
+  </span>
+  <span id="toastMsg">Berhasil!</span>
+</div>
+
 <script>
-// Mobile Nav Toggle
-const menu = document.getElementById('menu'), nav = document.getElementById('nav');
-menu.onclick = () => nav.classList.toggle('open');
+(function () {
+  'use strict';
 
-// Smooth Scroll Links
-document.querySelectorAll('.navlinks a').forEach(a => {
-  a.onclick = (e) => {
-    nav.classList.remove('open');
-    const target = a.getAttribute('href');
-    if(target && target.startsWith('#')){
-      e.preventDefault();
-      const el = document.querySelector(target);
-      if(el) el.scrollIntoView({behavior:'smooth'});
+  /* ==========================================================
+     HELPERS
+     ========================================================== */
+  const $  = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.prototype.slice.call(ctx.querySelectorAll(sel));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const preloader = $('#preloader');
+  const header    = $('#siteHeader');
+  const nav       = $('#nav');
+  const menu      = $('#menu');
+  const scrollBar = $('#scrollBar');
+  const backTop   = $('#backTop');
+  const toastEl   = $('#toast');
+  const toastMsg  = $('#toastMsg');
+  const cursorGlow = $('#cursorGlow');
+
+  /* ==========================================================
+     1. PRELOADER
+     ========================================================== */
+  let preloaderHidden = false;
+  function hidePreloader() {
+    if (preloaderHidden || !preloader) return;
+    preloaderHidden = true;
+    preloader.classList.add('done');
+    document.body.classList.add('loaded');
+    window.setTimeout(function () {
+      if (preloader && preloader.parentNode) preloader.style.display = 'none';
+    }, 700);
+  }
+  window.addEventListener('load', function () {
+    window.setTimeout(hidePreloader, 450);
+  });
+  window.setTimeout(hidePreloader, 2800);
+
+  /* ==========================================================
+     2. TOAST
+     ========================================================== */
+  let toastTimer = null;
+  function showToast(message) {
+    if (!toastEl) return;
+    if (toastMsg) toastMsg.textContent = message;
+    toastEl.classList.add('show');
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () {
+      toastEl.classList.remove('show');
+    }, 2600);
+  }
+
+  /* ==========================================================
+     3. SCROLL PROGRESS + HEADER + BACK TO TOP + ACTIVE NAV
+     ========================================================== */
+  const sections = $$('section[id]');
+  const navLinks = $$('.navlinks a');
+  let ticking = false;
+
+  function onScrollFrame() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (scrollBar) scrollBar.style.width = Math.min(pct, 100) + '%';
+    if (header) header.classList.toggle('scrolled', scrollTop > 24);
+    if (backTop) backTop.classList.toggle('show', scrollTop > 520);
+
+    // Active nav highlight
+    let currentId = 'home';
+    for (let i = 0; i < sections.length; i++) {
+      if (scrollTop >= sections[i].offsetTop - 190) currentId = sections[i].id;
     }
-  };
-});
+    for (let j = 0; j < navLinks.length; j++) {
+      navLinks[j].classList.toggle('active', navLinks[j].getAttribute('href') === '#' + currentId);
+    }
 
-// Typing Animation
-const typedMain = document.querySelector('.typed-main');
-const words = ["Erlan Maulana", "Customer Service", "Food Prep & Cooking", "Web Developer", "Teknis Lapangan"];
-let wordIdx = 0, charIdx = 0, isDeleting = false;
+    ticking = false;
+  }
 
-function typeEffect() {
-  const currentWord = words[wordIdx];
-  if (isDeleting) {
-    charIdx--;
+  function requestScrollFrame() {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(onScrollFrame);
+    }
+  }
+  window.addEventListener('scroll', requestScrollFrame, { passive: true });
+  window.addEventListener('resize', requestScrollFrame);
+  onScrollFrame();
+
+  /* ==========================================================
+     4. MOBILE NAV
+     ========================================================== */
+  if (menu && nav) {
+    menu.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== menu && !menu.contains(e.target)) {
+        nav.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ==========================================================
+     5. SMOOTH SCROLL
+     ========================================================== */
+  $$('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      const target = link.getAttribute('href');
+      if (!target || target === '#' || target.length < 2) return;
+      const el = document.querySelector(target);
+      if (!el) return;
+
+      e.preventDefault();
+      if (nav) nav.classList.remove('open');
+      if (menu) menu.setAttribute('aria-expanded', 'false');
+
+      const offset = (header ? header.offsetHeight : 72) - 4;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  /* ==========================================================
+     6. BACK TO TOP
+     ========================================================== */
+  if (backTop) {
+    backTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  /* ==========================================================
+     7. TYPING ANIMATION
+     ========================================================== */
+  const typedMain = $('.typed-main');
+  const words = ["Erlan Maulana", "Customer Service", "Food Prep & Cooking", "Web Developer", "Teknis Lapangan"];
+  let wordIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+  let typeTimer = null;
+
+  function typeEffect() {
+    if (!typedMain) return;
+    const currentWord = words[wordIdx];
+
+    charIdx += isDeleting ? -1 : 1;
+    typedMain.textContent = currentWord.substring(0, charIdx);
+
+    let speed = isDeleting ? 55 : 115;
+
+    if (!isDeleting && charIdx === currentWord.length) {
+      speed = 1600;
+      isDeleting = true;
+    } else if (isDeleting && charIdx <= 0) {
+      isDeleting = false;
+      wordIdx = (wordIdx + 1) % words.length;
+      speed = 320;
+    }
+    typeTimer = window.setTimeout(typeEffect, speed);
+  }
+
+  if (reduceMotion) {
+    if (typedMain) typedMain.textContent = words[0];
   } else {
-    charIdx++;
+    typeTimer = window.setTimeout(typeEffect, 700);
   }
 
-  typedMain.textContent = currentWord.substring(0, charIdx);
+  /* ==========================================================
+     8. SCROLL REVEAL
+     ========================================================== */
+  const revealEls = $$('.reveal');
 
-  let speed = isDeleting ? 60 : 120;
-  if (!isDeleting && charIdx === currentWord.length) {
-    speed = 1500;
-    isDeleting = true;
-  } else if (isDeleting && charIdx === 0) {
-    isDeleting = false;
-    wordIdx = (wordIdx + 1) % words.length;
-    speed = 300;
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('show'); });
   }
 
-  setTimeout(typeEffect, speed);
-}
-typeEffect();
+  /* ==========================================================
+     9. COUNTER ANIMATION
+     ========================================================== */
+  const counters = $$('.counter');
 
-// Scroll Reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-      observer.unobserve(e.target);
+  function animateCounter(el) {
+    if (el.dataset.done === '1') return;
+    el.dataset.done = '1';
+
+    const target = parseFloat(el.dataset.target || '0');
+    const suffix = el.dataset.suffix || '';
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      // easeOutExpo
+      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const value = Math.round(target * eased);
+      el.textContent = value + suffix;
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    window.requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach(function (el) { counterObserver.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      el.textContent = (el.dataset.target || '0') + (el.dataset.suffix || '');
+    });
+  }
+
+  /* ==========================================================
+     10. CARD SPOTLIGHT / TILT
+     ========================================================== */
+  if (window.matchMedia('(hover: hover)').matches && !reduceMotion) {
+    const hoverCards = $$('.card, .service-card');
+
+    hoverCards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mx', x + 'px');
+        card.style.setProperty('--my', y + 'px');
+      });
+
+      card.addEventListener('mouseleave', function () {
+        card.style.setProperty('--mx', '50%');
+        card.style.setProperty('--my', '0%');
+      });
+    });
+  }
+
+  /* ==========================================================
+     11. CURSOR GLOW
+     ========================================================== */
+  if (cursorGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let glowX = mouseX;
+    let glowY = mouseY;
+    let glowActive = false;
+
+    document.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!glowActive) {
+        glowActive = true;
+        document.body.classList.add('has-cursor');
+      }
+    });
+
+    document.addEventListener('mouseleave', function () {
+      document.body.classList.remove('has-cursor');
+    });
+
+    (function glowLoop() {
+      glowX += (mouseX - glowX) * 0.12;
+      glowY += (mouseY - glowY) * 0.12;
+      cursorGlow.style.transform = 'translate3d(' + glowX + 'px,' + glowY + 'px,0)';
+      window.requestAnimationFrame(glowLoop);
+    })();
+  }
+
+  /* ==========================================================
+     12. HERO PARTICLE CANVAS
+     ========================================================== */
+  (function initCanvas() {
+    const canvas = $('#heroCanvas');
+    if (!canvas || reduceMotion) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = 0;
+    let height = 0;
+    let particles = [];
+    let rafId = null;
+    let running = true;
+
+    function resize() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      width = Math.max(rect.width, 1);
+      height = Math.max(rect.height, 1);
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = Math.min(72, Math.max(24, Math.floor((width * height) / 17000)));
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.36,
+          vy: (Math.random() - 0.5) * 0.36,
+          r: Math.random() * 1.5 + 0.6
+        });
+      }
+    }
+
+    function draw() {
+      if (!running) return;
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) { p.x = 0; p.vx *= -1; }
+        if (p.x > width) { p.x = width; p.vx *= -1; }
+        if (p.y < 0) { p.y = 0; p.vy *= -1; }
+        if (p.y > height) { p.y = height; p.vy *= -1; }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(212, 175, 55, 0.55)';
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist2 = dx * dx + dy * dy;
+
+          if (dist2 < 13000) {
+            const alpha = 0.15 * (1 - dist2 / 13000);
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = 'rgba(212, 175, 55, ' + alpha.toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+      rafId = window.requestAnimationFrame(draw);
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(resize, 180);
+    });
+
+    // Pause when hero out of viewport (performance)
+    if ('IntersectionObserver' in window) {
+      const heroObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!running) {
+              running = true;
+              rafId = window.requestAnimationFrame(draw);
+            }
+          } else {
+            running = false;
+            if (rafId) window.cancelAnimationFrame(rafId);
+          }
+        });
+      }, { threshold: 0 });
+      heroObserver.observe(canvas.parentElement);
+    }
+
+    resize();
+    rafId = window.requestAnimationFrame(draw);
+  })();
+
+  /* ==========================================================
+     13. COPY EMAIL
+     ========================================================== */
+  const copyEmailBtn = $('#copyEmailBtn');
+  const EMAIL = 'id.erlan.maulana@gmail.com';
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        ok ? resolve() : reject(new Error('copy failed'));
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', function () {
+      copyToClipboard(EMAIL)
+        .then(function () { showToast('Email berhasil disalin: ' + EMAIL); })
+        .catch(function () { showToast('Gagal menyalin. Email: ' + EMAIL); });
+    });
+  }
+
+  /* ==========================================================
+     14. CONTACT FORM → WHATSAPP
+     ========================================================== */
+  const contactForm = $('#contactForm');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nameEl = $('#cName');
+      const subjectEl = $('#cSubject');
+      const msgEl = $('#cMsg');
+
+      const name = nameEl ? nameEl.value.trim() : '';
+      const subject = subjectEl ? subjectEl.value.trim() : '';
+      const message = msgEl ? msgEl.value.trim() : '';
+
+      if (!name) {
+        showToast('Mohon isi nama Anda terlebih dahulu.');
+        if (nameEl) nameEl.focus();
+        return;
+      }
+      if (!subject) {
+        showToast('Mohon isi keperluan pesan Anda.');
+        if (subjectEl) subjectEl.focus();
+        return;
+      }
+      if (!message) {
+        showToast('Mohon tulis pesan Anda terlebih dahulu.');
+        if (msgEl) msgEl.focus();
+        return;
+      }
+
+      const text =
+        'Halo Erlan Maulana,%0A%0A' +
+        'Nama: ' + encodeURIComponent(name) + '%0A' +
+        'Keperluan: ' + encodeURIComponent(subject) + '%0A%0A' +
+        'Pesan:%0A' + encodeURIComponent(message) + '%0A%0A' +
+        'Terima kasih.';
+
+      const url = 'https://wa.me/6283894480846?text=' + text;
+      window.open(url, '_blank', 'noopener');
+
+      showToast('Membuka WhatsApp...');
+      contactForm.reset();
+    });
+  }
+
+  /* ==========================================================
+     15. FOOTER YEAR
+     ========================================================== */
+  const yearEl = $('#year');
+  if (yearEl) {
+    const y = new Date().getFullYear();
+    yearEl.textContent = y > 2026 ? String(y) : '2026';
+  }
+
+  /* ==========================================================
+     16. KEYBOARD SHORTCUTS
+     ========================================================== */
+  document.addEventListener('keydown', function (e) {
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    if (tag === 'input' || tag === 'textarea') return;
+
+    if (e.key === 'Home') {
+      // biarkan default
     }
   });
-}, {threshold: 0.12});
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  /* ==========================================================
+     17. SAFETY: pastikan semua reveal tampil bila ada kendala
+     ========================================================== */
+  window.setTimeout(function () {
+    const stillHidden = $$('.reveal:not(.show)');
+    if (stillHidden.length === 0) return;
+    // Hanya paksa tampil elemen yang sudah masuk viewport
+    stillHidden.forEach(function (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('show');
+      }
+    });
+  }, 2200);
 
-// Active Nav Highlight on Scroll
-const sections = [...document.querySelectorAll('section[id] me')].length ? [...document.querySelectorAll('section[id]')] : [...document.querySelectorAll('section[id]')];
-const links = [...document.querySelectorAll('.navlinks a')];
-window.addEventListener('scroll', () => {
-  let current = 'home';
-  sections.forEach(s => { if(scrollY >= s.offsetTop - 180) current = s.id; });
-  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
-});
+})();
 </script>
 </body>
 </html>
