@@ -3,16 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CV & Portofolio Erlan Maulana — Customer Service, Food Prep & Cooking, Web Developer, Teknis Lapangan. Lebak, Banten.">
+<meta name="description" content="Curriculum Vitae Erlan Maulana - Customer Service, Food Prep & Cooking, Web Developer, Teknis Lapangan. Lebak, Banten.">
 <meta name="theme-color" content="#070a13">
-<title>CV & Portofolio — Erlan Maulana</title>
+<title>Curriculum Vitae - Erlan Maulana</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070a13'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='28' font-weight='bold' fill='%23d4af37'%3EEM%3C/text%3E%3C/svg%3E">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-/* ============================================================
-   ROOT VARIABLES
-   ============================================================ */
 :root {
   --bg: #070a13;
   --bg-2: #0a0f1c;
@@ -33,9 +30,6 @@
   --ease: cubic-bezier(0.22, 0.85, 0.28, 1);
 }
 
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
@@ -70,7 +64,6 @@ svg { display: block; }
 
 ::selection { background: rgba(212, 175, 55, 0.35); color: #fff; }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: #05070e; }
 ::-webkit-scrollbar-thumb {
@@ -82,9 +75,6 @@ svg { display: block; }
 
 .container { width: min(var(--max), 92%); margin: auto; position: relative; z-index: 2; }
 
-/* ============================================================
-   PRELOADER
-   ============================================================ */
 .preloader {
   position: fixed;
   inset: 0;
@@ -130,9 +120,6 @@ svg { display: block; }
   color: var(--muted); font-weight: 700;
 }
 
-/* ============================================================
-   SCROLL PROGRESS BAR
-   ============================================================ */
 .scroll-progress {
   position: fixed; top: 0; left: 0; right: 0; height: 3px;
   background: rgba(148, 163, 184, 0.08);
@@ -145,9 +132,6 @@ svg { display: block; }
   transition: width 0.1s linear;
 }
 
-/* ============================================================
-   CURSOR GLOW (desktop only)
-   ============================================================ */
 .cursor-glow {
   position: fixed; top: 0; left: 0;
   width: 420px; height: 420px;
@@ -162,9 +146,6 @@ svg { display: block; }
 }
 body.has-cursor .cursor-glow { opacity: 1; }
 
-/* ============================================================
-   HEADER / NAVBAR
-   ============================================================ */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 72px;
   background: rgba(7, 10, 19, 0.82);
@@ -238,14 +219,8 @@ header.scrolled {
 .menu:hover { background: var(--bg-card-hover); border-color: var(--gold); }
 .menu svg { width: 20px; height: 20px; }
 
-/* ============================================================
-   SECTIONS
-   ============================================================ */
 section { padding: 92px 0 44px 0; scroll-margin-top: 72px; position: relative; }
 
-/* ============================================================
-   HERO
-   ============================================================ */
 .hero {
   min-height: 100vh;
   display: flex; align-items: center;
@@ -287,7 +262,6 @@ section { padding: 92px 0 44px 0; scroll-margin-top: 72px; position: relative; }
 
 .hero .container { z-index: 3; }
 
-/* Availability badge */
 .avail-badge {
   display: inline-flex; align-items: center; gap: 9px;
   padding: 7px 15px 7px 11px;
@@ -395,7 +369,6 @@ h1 {
 }
 .btn.ghost::after { display: none; }
 
-/* Hero stats (original 3) */
 .stats {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 14px; margin-top: 48px;
@@ -420,7 +393,6 @@ h1 {
 .stat b { font-size: 14.5px; color: #fff; display: block; line-height: 1.25; }
 .stat small { color: var(--muted); font-size: 10.5px; letter-spacing: 0.4px; text-transform: uppercase; font-weight: 600; }
 
-/* Scroll hint */
 .scroll-hint {
   position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
   z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 7px;
@@ -447,9 +419,6 @@ h1 {
   50% { transform: translate(-50%, -6px); }
 }
 
-/* ============================================================
-   MARQUEE
-   ============================================================ */
 .marquee {
   position: relative;
   overflow: hidden;
@@ -485,9 +454,6 @@ h1 {
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
 }
 
-/* ============================================================
-   SECTION HEADINGS
-   ============================================================ */
 .section-head {
   margin-bottom: 30px;
   border-left: 4px solid var(--gold);
@@ -510,9 +476,6 @@ h1 {
 h2 { font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -1px; color: #fff; font-weight: 800; }
 h2 em { font-style: normal; color: var(--gold); }
 
-/* ============================================================
-   CARDS
-   ============================================================ */
 .card {
   position: relative;
   padding: 28px; border: 1px solid var(--line); border-radius: var(--radius);
@@ -545,9 +508,6 @@ h2 em { font-style: normal; color: var(--gold); }
 .card p { color: #cbd5e1; font-size: 14.5px; line-height: 1.85; }
 .card b { color: var(--gold-light); }
 
-/* ============================================================
-   GRID & INFO BOX
-   ============================================================ */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
 
 .info-box {
@@ -582,9 +542,6 @@ h2 em { font-style: normal; color: var(--gold); }
 .info-box p { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.4; }
 .info-box small { display: block; font-size: 12px; color: var(--gold-light); font-weight: 600; margin-top: 2px; }
 
-/* ============================================================
-   CUSTOM LIST
-   ============================================================ */
 .custom-list { list-style: none; }
 .custom-list li {
   position: relative; padding-left: 24px; margin-bottom: 12px;
@@ -600,9 +557,6 @@ h2 em { font-style: normal; color: var(--gold); }
 }
 .custom-list li b { color: var(--gold-light); }
 
-/* ============================================================
-   COUNTER STRIP
-   ============================================================ */
 .counter-strip {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -645,9 +599,6 @@ h2 em { font-style: normal; color: var(--gold); }
   text-transform: uppercase; color: var(--muted);
 }
 
-/* ============================================================
-   SERVICE CARDS
-   ============================================================ */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -696,7 +647,6 @@ h2 em { font-style: normal; color: var(--gold); }
 }
 .service-card p { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
 
-/* Tags */
 .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
 .tag {
   display: inline-flex; align-items: center; gap: 6px;
@@ -715,9 +665,6 @@ h2 em { font-style: normal; color: var(--gold); }
   border-color: var(--gold);
 }
 
-/* ============================================================
-   TIMELINE (EXPERIENCE)
-   ============================================================ */
 .timeline { position: relative; padding-left: 0; }
 .timeline::before {
   content: ""; position: absolute; left: 0; top: 8px; bottom: 8px;
@@ -781,9 +728,6 @@ h2 em { font-style: normal; color: var(--gold); }
 }
 .tl-place svg { width: 13px; height: 13px; color: var(--gold); flex: none; }
 
-/* ============================================================
-   SKILLS
-   ============================================================ */
 .skill-row { margin-bottom: 22px; }
 .skill-row:last-child { margin-bottom: 0; }
 .skill-meta {
@@ -829,9 +773,6 @@ h2 em { font-style: normal; color: var(--gold); }
 }
 .reveal.show .skill-level i { width: var(--w, 0%); }
 
-/* ============================================================
-   CONTACT
-   ============================================================ */
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
@@ -904,9 +845,6 @@ h2 em { font-style: normal; color: var(--gold); }
 }
 .form-note svg { width: 13px; height: 13px; color: var(--gold); flex: none; }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 footer {
   background: #04060c;
   border-top: 1px solid var(--line);
@@ -942,9 +880,6 @@ footer::before {
 }
 .footer-socials a svg { width: 16px; height: 16px; }
 
-/* ============================================================
-   BACK TO TOP
-   ============================================================ */
 .back-top {
   position: fixed; right: 20px; bottom: 20px; z-index: 900;
   width: 46px; height: 46px; border-radius: 13px;
@@ -959,9 +894,6 @@ footer::before {
 .back-top:hover { transform: translateY(-4px) scale(1.05); }
 .back-top svg { width: 20px; height: 20px; }
 
-/* ============================================================
-   TOAST
-   ============================================================ */
 .toast {
   position: fixed; left: 50%; bottom: 28px; z-index: 3000;
   transform: translate(-50%, 130%);
@@ -984,9 +916,6 @@ footer::before {
 }
 .toast .toast-ico svg { width: 14px; height: 14px; }
 
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -1002,9 +931,6 @@ footer::before {
 .reveal-scale { transform: scale(0.94); }
 .reveal-scale.show { transform: scale(1); }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 1024px) {
   .contact-layout { grid-template-columns: 1fr; }
 }
@@ -1079,9 +1005,6 @@ footer::before {
   .tl-head { flex-direction: column; align-items: flex-start; }
 }
 
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -1092,9 +1015,6 @@ footer::before {
   .reveal { opacity: 1 !important; transform: none !important; }
 }
 
-/* ============================================================
-   PRINT
-   ============================================================ */
 @media print {
   header, .btn-print, .hero-actions, .back-top, .scroll-progress,
   .preloader, .marquee, .scroll-hint, .cursor-glow, .toast,
@@ -1144,22 +1064,18 @@ footer::before {
 </head>
 <body>
 
-<!-- ================= PRELOADER ================= -->
 <div class="preloader" id="preloader">
   <div class="pre-inner">
     <div class="pre-logo">EM</div>
     <div class="pre-bar"><i></i></div>
-    <div class="pre-text">Menyiapkan Portofolio</div>
+    <div class="pre-text">Menyiapkan Curriculum Vitae</div>
   </div>
 </div>
 
-<!-- ================= SCROLL PROGRESS ================= -->
 <div class="scroll-progress" aria-hidden="true"><i id="scrollBar"></i></div>
 
-<!-- ================= CURSOR GLOW ================= -->
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-<!-- ================= HEADER ================= -->
 <header id="siteHeader">
   <div class="container nav">
     <a class="logo" href="#home" aria-label="Erlan Maulana - Beranda">
@@ -1195,7 +1111,6 @@ footer::before {
 
 <main>
 
-<!-- ================= HERO ================= -->
 <section class="hero" id="home">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="container">
@@ -1299,7 +1214,6 @@ footer::before {
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="container">
     <div class="section-head reveal">
@@ -1360,7 +1274,6 @@ footer::before {
   </div>
 </section>
 
-<!-- ================= SERVICES ================= -->
 <section id="services">
   <div class="container">
     <div class="section-head reveal">
@@ -1490,7 +1403,6 @@ footer::before {
   </div>
 </section>
 
-<!-- ================= EXPERIENCE ================= -->
 <section id="experience">
   <div class="container">
     <div class="section-head reveal">
@@ -1637,7 +1549,6 @@ footer::before {
   </div>
 </section>
 
-<!-- ================= SKILLS ================= -->
 <section id="skills" class="skills">
   <div class="container">
     <div class="section-head reveal">
@@ -1736,7 +1647,6 @@ footer::before {
   </div>
 </section>
 
-<!-- ================= EDUCATION ================= -->
 <section id="education">
   <div class="container">
     <div class="section-head reveal">
@@ -1781,7 +1691,6 @@ footer::before {
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
 <section id="contact">
   <div class="container">
     <div class="section-head reveal">
@@ -1893,7 +1802,6 @@ footer::before {
 
 </main>
 
-<!-- ================= FOOTER ================= -->
 <footer>
   <div class="container footer">
     <div class="footer-left">
@@ -1925,14 +1833,12 @@ footer::before {
   </div>
 </footer>
 
-<!-- ================= BACK TO TOP ================= -->
 <button class="back-top" id="backTop" aria-label="Kembali ke atas">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 19V5M5 12l7-7 7 7"/>
   </svg>
 </button>
 
-<!-- ================= TOAST ================= -->
 <div class="toast" id="toast" role="status" aria-live="polite">
   <span class="toast-ico">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
@@ -1946,9 +1852,6 @@ footer::before {
 (function () {
   'use strict';
 
-  /* ==========================================================
-     HELPERS
-     ========================================================== */
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.prototype.slice.call(ctx.querySelectorAll(sel));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1963,9 +1866,6 @@ footer::before {
   const toastMsg  = $('#toastMsg');
   const cursorGlow = $('#cursorGlow');
 
-  /* ==========================================================
-     1. PRELOADER
-     ========================================================== */
   let preloaderHidden = false;
   function hidePreloader() {
     if (preloaderHidden || !preloader) return;
@@ -1981,9 +1881,6 @@ footer::before {
   });
   window.setTimeout(hidePreloader, 2800);
 
-  /* ==========================================================
-     2. TOAST
-     ========================================================== */
   let toastTimer = null;
   function showToast(message) {
     if (!toastEl) return;
@@ -1995,9 +1892,6 @@ footer::before {
     }, 2600);
   }
 
-  /* ==========================================================
-     3. SCROLL PROGRESS + HEADER + BACK TO TOP + ACTIVE NAV
-     ========================================================== */
   const sections = $$('section[id]');
   const navLinks = $$('.navlinks a');
   let ticking = false;
@@ -2011,7 +1905,6 @@ footer::before {
     if (header) header.classList.toggle('scrolled', scrollTop > 24);
     if (backTop) backTop.classList.toggle('show', scrollTop > 520);
 
-    // Active nav highlight
     let currentId = 'home';
     for (let i = 0; i < sections.length; i++) {
       if (scrollTop >= sections[i].offsetTop - 190) currentId = sections[i].id;
@@ -2033,9 +1926,6 @@ footer::before {
   window.addEventListener('resize', requestScrollFrame);
   onScrollFrame();
 
-  /* ==========================================================
-     4. MOBILE NAV
-     ========================================================== */
   if (menu && nav) {
     menu.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -2058,9 +1948,6 @@ footer::before {
     });
   }
 
-  /* ==========================================================
-     5. SMOOTH SCROLL
-     ========================================================== */
   $$('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       const target = link.getAttribute('href');
@@ -2078,18 +1965,12 @@ footer::before {
     });
   });
 
-  /* ==========================================================
-     6. BACK TO TOP
-     ========================================================== */
   if (backTop) {
     backTop.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
   }
 
-  /* ==========================================================
-     7. TYPING ANIMATION
-     ========================================================== */
   const typedMain = $('.typed-main');
   const words = ["Erlan Maulana", "Customer Service", "Food Prep & Cooking", "Web Developer", "Teknis Lapangan"];
   let wordIdx = 0;
@@ -2123,9 +2004,6 @@ footer::before {
     typeTimer = window.setTimeout(typeEffect, 700);
   }
 
-  /* ==========================================================
-     8. SCROLL REVEAL
-     ========================================================== */
   const revealEls = $$('.reveal');
 
   if ('IntersectionObserver' in window) {
@@ -2143,9 +2021,6 @@ footer::before {
     revealEls.forEach(function (el) { el.classList.add('show'); });
   }
 
-  /* ==========================================================
-     9. COUNTER ANIMATION
-     ========================================================== */
   const counters = $$('.counter');
 
   function animateCounter(el) {
@@ -2189,9 +2064,6 @@ footer::before {
     });
   }
 
-  /* ==========================================================
-     10. CARD SPOTLIGHT / TILT
-     ========================================================== */
   if (window.matchMedia('(hover: hover)').matches && !reduceMotion) {
     const hoverCards = $$('.card, .service-card');
 
@@ -2211,9 +2083,6 @@ footer::before {
     });
   }
 
-  /* ==========================================================
-     11. CURSOR GLOW
-     ========================================================== */
   if (cursorGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion) {
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -2242,9 +2111,6 @@ footer::before {
     })();
   }
 
-  /* ==========================================================
-     12. HERO PARTICLE CANVAS
-     ========================================================== */
   (function initCanvas() {
     const canvas = $('#heroCanvas');
     if (!canvas || reduceMotion) return;
@@ -2329,7 +2195,6 @@ footer::before {
       resizeTimer = window.setTimeout(resize, 180);
     });
 
-    // Pause when hero out of viewport (performance)
     if ('IntersectionObserver' in window) {
       const heroObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -2351,9 +2216,6 @@ footer::before {
     rafId = window.requestAnimationFrame(draw);
   })();
 
-  /* ==========================================================
-     13. COPY EMAIL
-     ========================================================== */
   const copyEmailBtn = $('#copyEmailBtn');
   const EMAIL = 'id.erlan.maulana@gmail.com';
 
@@ -2388,9 +2250,6 @@ footer::before {
     });
   }
 
-  /* ==========================================================
-     14. CONTACT FORM → WHATSAPP
-     ========================================================== */
   const contactForm = $('#contactForm');
 
   if (contactForm) {
@@ -2436,34 +2295,23 @@ footer::before {
     });
   }
 
-  /* ==========================================================
-     15. FOOTER YEAR
-     ========================================================== */
   const yearEl = $('#year');
   if (yearEl) {
     const y = new Date().getFullYear();
     yearEl.textContent = y > 2026 ? String(y) : '2026';
   }
 
-  /* ==========================================================
-     16. KEYBOARD SHORTCUTS
-     ========================================================== */
   document.addEventListener('keydown', function (e) {
     const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
     if (tag === 'input' || tag === 'textarea') return;
 
     if (e.key === 'Home') {
-      // biarkan default
     }
   });
 
-  /* ==========================================================
-     17. SAFETY: pastikan semua reveal tampil bila ada kendala
-     ========================================================== */
   window.setTimeout(function () {
     const stillHidden = $$('.reveal:not(.show)');
     if (stillHidden.length === 0) return;
-    // Hanya paksa tampil elemen yang sudah masuk viewport
     stillHidden.forEach(function (el) {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
